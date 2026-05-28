@@ -1,0 +1,258 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// ========================
+// ENUMS
+// ========================
+
+enum Role {
+  USER
+  ADMIN
+  SUPER_ADMIN
+  POLICE
+  HOSPITAL
+}
+
+enum EmergencyType {
+  HOSPITAL
+  AMBULANCE
+  POLICE
+  TOWING
+  RESCUE
+}
+
+enum SosStatus {
+  PENDING
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELLED
+}
+
+enum NotificationType {
+  SOS_UPDATE
+  EMERGENCY_ALERT
+  SYSTEM
+  PROMOTION
+  ACCOUNT
+}
+
+enum ServiceType {
+  HOSPITAL
+  AMBULANCE
+  POLICE
+  TOWING
+  RESCUE
+}
+
+// ========================
+// MODELS
+// ========================
+
+model User {
+  id                String   @id @default(uuid())
+  fullName          String
+  email             String   @unique
+  phone             String   @unique
+  password          String
+  avatar            String?
+  role              Role     @default(USER)
+  isVerified        Boolean  @default(false)
+  isBlocked         Boolean  @default(false)
+  lastLogin         DateTime?
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  // Signup fields (Personal, Medical, Vehicle)
+  bloodGroup        String?
+  address           String?
+  gender            String?
+  dob               String?
+  dlNumber          String?
+  vehicleType       String?
+  vehicleNumber     String?
+  vehicleModel      String?
+  medicalConditions String?
+  aadhaar           String?
+  insurance         String?
+  organDonor        String?
+  allergies         String?
+  currentMedications String?
+  disabilityInfo     String?
+
+  // Relations
+  emergencyContacts EmergencyContact[]
+  sosRequests       SosRequest[]
+  notifications     Notification[]
+  otps              Otp[]
+  refreshTokens     RefreshToken[]
+  deviceLogs        DeviceLog[]
+  auditLogs         AuditLog[]
+
+  @@index([email])
+  @@index([phone])
+  @@index([role])
+  @@map("users")
+}
+
+model EmergencyContact {
+  id           String   @id @default(uuid())
+  userId       String
+  name         String
+  relationship String
+  phone        String
+  email        String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("emergency_contacts")
+}
+
+model SosRequest {
+  id              String        @id @default(uuid())
+  userId          String
+  latitude        Float
+  longitude       Float
+  address         String?
+  emergencyType   EmergencyType
+  status          SosStatus     @default(PENDING)
+  assignedService String?
+  description     String?
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  // Accident specific auto-generated and detection fields
+  googleMapsLink  String?
+  severity        String?       @default("LOW")
+  accidentImage   String?
+  accidentVideo   String?
+  accidentAudio   String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+  @@index([emergencyType])
+  @@index([createdAt])
+  @@map("sos_requests")
+}
+
+model ServiceProvider {
+  id          String      @id @default(uuid())
+  name        String
+  type        ServiceType
+  address     String
+  phone       String
+  email       String?
+  latitude    Float
+  longitude   Float
+  isAvailable Boolean     @default(true)
+  rating      Float?      @default(0)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@index([type])
+  @@index([isAvailable])
+  @@index([latitude, longitude])
+  @@map("service_providers")
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  title     String
+  message   String
+  type      NotificationType @default(SYSTEM)
+  isRead    Boolean          @default(false)
+  metadata  Json?
+  createdAt DateTime         @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([isRead])
+  @@index([createdAt])
+  @@map("notifications")
+}
+
+model Otp {
+  id        String   @id @default(uuid())
+  email     String
+  otp       String
+  purpose   String   @default("EMAIL_VERIFICATION")
+  expiresAt DateTime
+  verified  Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([email])
+  @@index([expiresAt])
+  @@map("otps")
+}
+
+model RefreshToken {
+  id        String   @id @default(uuid())
+  token     String   @unique
+  userId    String
+  userAgent String?
+  ipAddress String?
+  expiresAt DateTime
+  isRevoked Boolean  @default(false)
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([token])
+  @@index([userId])
+  @@index([expiresAt])
+  @@map("refresh_tokens")
+}
+
+model DeviceLog {
+  id        String   @id @default(uuid())
+  userId    String
+  userAgent String?
+  ipAddress String?
+  device    String?
+  location  String?
+  loginAt   DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@map("device_logs")
+}
+
+model AuditLog {
+  id        String   @id @default(uuid())
+  userId    String?
+  action    String
+  entity    String?
+  entityId  String?
+  oldValue  Json?
+  newValue  Json?
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([userId])
+  @@index([action])
+  @@index([createdAt])
+  @@map("audit_logs")
+}

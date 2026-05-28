@@ -1,0 +1,94 @@
+version: '3.9'
+
+services:
+  # ========================
+  # PostgreSQL Database
+  # ========================
+  postgres:
+    image: postgres:16-alpine
+    container_name: roadsos_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: roadsos_user
+      POSTGRES_PASSWORD: roadsos_pass
+      POSTGRES_DB: roadsos_db
+    ports:
+      - '5432:5432'
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U roadsos_user -d roadsos_db']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================
+  # Redis Cache
+  # ========================
+  redis:
+    image: redis:7-alpine
+    container_name: roadsos_redis
+    restart: unless-stopped
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes --requirepass ""
+    healthcheck:
+      test: ['CMD', 'redis-cli', 'ping']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ========================
+  # ROADSOS Backend
+  # ========================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: roadsos_backend
+    restart: unless-stopped
+    ports:
+      - '5000:5000'
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_URL: postgresql://roadsos_user:roadsos_pass@postgres:5432/roadsos_db?schema=public
+      REDIS_URL: redis://redis:6379
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      JWT_SECRET: ${JWT_SECRET:-roadsos_super_secret_jwt_key_production_min_32_chars}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:-roadsos_refresh_secret_production_min_32_chars}
+      JWT_ACCESS_EXPIRES_IN: 15m
+      JWT_REFRESH_EXPIRES_IN: 7d
+      SMTP_HOST: ${SMTP_HOST:-smtp.gmail.com}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER:-}
+      SMTP_PASS: ${SMTP_PASS:-}
+      SMTP_FROM_NAME: ROADSOS Emergency
+      SMTP_FROM_EMAIL: ${SMTP_FROM_EMAIL:-noreply@roadsos.com}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:3000}
+      BCRYPT_ROUNDS: 12
+      OTP_EXPIRY_MINUTES: 10
+    volumes:
+      - ./uploads:/app/uploads
+      - ./src/logs:/app/src/logs
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://localhost:5000/api/health']
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  postgres_data:
+    driver: local
+  redis_data:
+    driver: local

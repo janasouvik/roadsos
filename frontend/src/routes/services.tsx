@@ -495,15 +495,15 @@ function Services() {
             </div>
             <h3 className="text-lg font-bold">All Emergency Services</h3>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4">
             {allServices.map((s) => (
-              <GlassCard key={s.label} className="flex flex-col">
-                <div className="icon-tile h-12 w-12 mb-3" style={{ color: s.color }}>
+              <GlassCard key={s.label} className="flex flex-col p-4 md:p-6">
+                <div className="icon-tile h-10 w-10 md:h-12 md:w-12 mb-3" style={{ color: s.color }}>
                   <s.Icon className="h-5 w-5" />
                 </div>
-                <h4 className="font-semibold text-sm">{s.label}</h4>
-                <p className="text-xs text-muted-foreground mt-1 mb-3">{s.desc}</p>
-                <button className="mt-auto inline-flex items-center gap-1 text-xs font-semibold" style={{ color: s.color }}>
+                <h4 className="font-semibold text-sm md:text-base leading-tight">{s.label}</h4>
+                <p className="hidden md:block text-xs text-muted-foreground mt-1 mb-3">{s.desc}</p>
+                <button className="mt-auto pt-2 inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold" style={{ color: s.color }}>
                   Explore <ArrowRight className="h-3 w-3" />
                 </button>
               </GlassCard>

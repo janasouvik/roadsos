@@ -13,6 +13,8 @@ import {
 import appCss from "../styles.css?url";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { MobileHeader } from "@/components/MobileHeader";
+import { MobileBottomNav } from "@/components/MobileBottomNav";
 
 function NotFoundComponent() {
   return (
@@ -100,12 +102,14 @@ function RootComponent() {
       {isAuth ? (
         <Outlet />
       ) : (
-        <div className="flex min-h-screen flex-col">
+        <div className="flex min-h-screen flex-col pb-16 md:pb-0">
+          <MobileHeader />
           <Navbar />
           <main className="flex-1">
             <Outlet />
           </main>
           <Footer />
+          <MobileBottomNav />
         </div>
       )}
     </QueryClientProvider>

@@ -52,7 +52,7 @@ export function Navbar() {
       initial={{ y: -20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-      className="sticky top-0 z-50 glass-nav"
+      className="hidden md:block sticky top-0 z-50 glass-nav"
     >
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 h-[72px] flex items-center justify-between gap-4">
         <Link to="/" className="shrink-0">

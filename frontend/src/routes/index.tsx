@@ -117,15 +117,15 @@ function Home() {
           eyebrow={<><Zap className="h-3 w-3" /> All Services at Your Fingertips</>}
           title="Quick Access to Essential Services"
         />
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
+        <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-3 md:gap-4">
           {services.map((s) => (
-            <GlassCard key={s.label} className="flex flex-col">
-              <div className="icon-tile h-14 w-14 mb-4" style={{ color: s.color }}>
-                <s.Icon className="h-6 w-6" />
+            <GlassCard key={s.label} className="flex flex-col p-4 md:p-6">
+              <div className="icon-tile h-10 w-10 md:h-14 md:w-14 mb-3 md:mb-4" style={{ color: s.color }}>
+                <s.Icon className="h-5 w-5 md:h-6 md:w-6" />
               </div>
-              <h3 className="font-semibold">{s.label}</h3>
-              <p className="text-xs text-muted-foreground mt-1.5 mb-4">{s.desc}</p>
-              <button className="mt-auto inline-flex items-center gap-1 text-xs font-semibold" style={{ color: s.color }}>
+              <h3 className="font-semibold text-sm md:text-base leading-tight">{s.label}</h3>
+              <p className="hidden md:block text-xs text-muted-foreground mt-1.5 mb-4">{s.desc}</p>
+              <button className="mt-auto pt-2 inline-flex items-center gap-1 text-[11px] md:text-xs font-semibold" style={{ color: s.color }}>
                 Find Now <ArrowRight className="h-3 w-3" />
               </button>
             </GlassCard>

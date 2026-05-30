@@ -4,7 +4,7 @@ import { Logo } from "./Logo";
 
 export function Footer() {
   return (
-    <footer className="relative border-t border-border/60 mt-20">
+    <footer className="hidden md:block relative border-t border-border/60 mt-20">
       <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 py-14 grid gap-10 md:grid-cols-2 lg:grid-cols-4">
         <div>
           <Logo withTagline />

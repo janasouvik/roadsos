@@ -40,7 +40,7 @@ const createApp = (): Application => {
   app.use(
     cors({
       origin: (origin, callback) => {
-        const allowed = [env.CLIENT_URL, 'http://localhost:3000', 'http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081'];
+        const allowed = [env.CLIENT_URL, 'http://localhost:3000', 'http://localhost:5173', 'http://localhost:8080', 'http://localhost:8081', 'http://localhost', 'capacitor://localhost', 'http://10.240.125.164:5173'];
         if (!origin || allowed.includes(origin)) {
           callback(null, true);
         } else {

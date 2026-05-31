@@ -8,6 +8,8 @@ RUN apk add --no-cache openssl
 
 WORKDIR /app
 
+RUN apk add --no-cache openssl
+
 # Install dependencies
 COPY package*.json ./
 COPY prisma ./prisma/

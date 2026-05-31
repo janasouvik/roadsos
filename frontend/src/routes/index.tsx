@@ -44,7 +44,7 @@ function Home() {
       {/* HERO */}
       <section className="relative pt-10 lg:pt-16 pb-10 overflow-hidden">
         <div className="absolute inset-0 ambient-grid opacity-30 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10">
           <div className="grid lg:grid-cols-[1.15fr_1fr] gap-8 lg:gap-10 items-center">
             <motion.div initial="hidden" animate="show" variants={{ hidden: {}, show: { transition: { staggerChildren: 0.08 } } }}>
               <FadeUp>

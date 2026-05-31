@@ -234,6 +234,10 @@ function Signup() {
         ],
       }}
     >
+      <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors">
+        <ArrowLeft className="h-4 w-4" />
+        Back to Home
+      </Link>
       <h2 className="text-3xl font-bold">Sign Up</h2>
       <p className="text-sm text-muted-foreground mt-1">
         Already have an account? <Link to="/login" className="text-brand-red font-semibold">Log in</Link>

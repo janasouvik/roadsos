@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ShieldPlus, MapPin, Bell, Lock, LogIn, Eye, EyeOff, Mail, AlertCircle, Loader2 } from "lucide-react";
+import { ShieldPlus, MapPin, Bell, Lock, LogIn, Eye, EyeOff, Mail, AlertCircle, Loader2, ArrowLeft } from "lucide-react";
 import { AuthLayout } from "@/components/AuthLayout";
 import { GoogleIcon, AppleIcon, FacebookIcon, TwitterIcon, InstagramIcon, LinkedinIcon } from "@/components/BrandIcons";
 import { Logo } from "@/components/Logo";
@@ -49,6 +49,10 @@ function Login() {
           ],
         }}
       >
+        <Link to="/" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground mb-4 transition-colors">
+          <ArrowLeft className="h-4 w-4" />
+          Back to Home
+        </Link>
         <h2 className="text-3xl font-bold">Login</h2>
         <p className="text-sm text-muted-foreground mt-1">
           Don't have an account? <Link to="/signup" className="text-brand-red font-semibold">Sign up</Link>
@@ -141,7 +145,7 @@ function Login() {
       </AuthLayout>
 
       <footer className="border-t border-border/60 mt-6">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 py-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 py-6 flex flex-col sm:flex-row gap-4 items-center justify-between">
           <Logo withTagline />
           <div className="flex gap-5 text-xs text-muted-foreground">
             {["Privacy Policy", "Terms of Service", "FAQ", "Support"].map((l) => (

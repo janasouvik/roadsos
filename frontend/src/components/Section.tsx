@@ -23,7 +23,7 @@ export function Section({
       viewport={{ once: true, margin: "-80px" }}
       className={cn("py-16 md:py-24", className)}
     >
-      <div className={container ? "max-w-7xl mx-auto px-4 md:px-6 lg:px-10" : ""}>
+      <div className={container ? "max-w-7xl mx-auto px-6 md:px-8 lg:px-10" : ""}>
         {children}
       </div>
     </motion.section>

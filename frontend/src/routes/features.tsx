@@ -50,7 +50,7 @@ function Features() {
   return (
     <>
       <section className="relative pt-10 lg:pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
           <FadeUp>
             <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-brand-red/15 text-brand-red border border-brand-red/30">
               Powerful Features

@@ -16,7 +16,7 @@ export function AuthLayout({
   return (
     <div className="min-h-screen flex flex-col">
       <header className="glass-nav">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 h-[72px] flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 h-[72px] flex items-center justify-between">
           <Link to="/"><Logo withTagline /></Link>
           <div className="flex items-center gap-2">
             <ThemeToggle />
@@ -24,7 +24,7 @@ export function AuthLayout({
         </div>
       </header>
 
-      <main className="flex-1 max-w-7xl mx-auto w-full px-4 md:px-6 lg:px-10 py-10">
+      <main className="flex-1 max-w-7xl mx-auto w-full px-6 md:px-8 lg:px-10 py-10">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-8">
           {/* Side panel */}
           <motion.div

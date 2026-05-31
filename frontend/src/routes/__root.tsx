@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { App } from "@capacitor/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import {
   Outlet,
@@ -15,10 +17,12 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { MobileHeader } from "@/components/MobileHeader";
 import { MobileBottomNav } from "@/components/MobileBottomNav";
+import { Toaster } from "@/components/ui/sonner";
+import { toast } from "sonner";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <div className="flex min-h-screen items-center justify-center px-6">
       <div className="max-w-md text-center glass-card rounded-3xl p-10">
         <h1 className="text-7xl font-bold gradient-text-red">404</h1>
         <h2 className="mt-4 text-xl font-semibold">Page not found</h2>
@@ -37,7 +41,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   return (
-    <div className="flex min-h-screen items-center justify-center px-4">
+    <div className="flex min-h-screen items-center justify-center px-6">
       <div className="max-w-md text-center glass-card rounded-3xl p-10">
         <h1 className="text-xl font-semibold">This page didn't load</h1>
         <p className="mt-2 text-sm text-muted-foreground">Something went wrong. Try again or head home.</p>
@@ -94,8 +98,35 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-  const { pathname } = useLocation();
+  const router = useRouter();
+  const location = useLocation();
+  const { pathname } = location;
   const isAuth = pathname === "/login" || pathname === "/signup";
+
+  useEffect(() => {
+    let lastBackPress = 0;
+    const listener = App.addListener('backButton', () => {
+      if (pathname === '/') {
+        const now = Date.now();
+        if (now - lastBackPress < 2000) {
+          App.exitApp();
+        } else {
+          lastBackPress = now;
+          toast('Press back again to exit', { duration: 2000 });
+        }
+      } else {
+        if (window.history.length > 2) {
+          router.history.back();
+        } else {
+          router.navigate({ to: '/' });
+        }
+      }
+    });
+
+    return () => {
+      listener.then(l => l.remove());
+    };
+  }, [pathname, router]);
 
   return (
     <QueryClientProvider client={queryClient}>
@@ -112,6 +143,7 @@ function RootComponent() {
           <MobileBottomNav />
         </div>
       )}
+      <Toaster />
     </QueryClientProvider>
   );
 }

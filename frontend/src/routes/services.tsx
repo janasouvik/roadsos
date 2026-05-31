@@ -333,7 +333,7 @@ function Services() {
       {/* HERO */}
       <section className="relative pt-10 lg:pt-16 pb-12 overflow-hidden">
         <div className="absolute inset-0 ambient-grid opacity-25 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 grid lg:grid-cols-2 gap-8 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 grid lg:grid-cols-2 gap-8 items-center">
           <FadeUp>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               Our <span className="gradient-text-red">Services</span>

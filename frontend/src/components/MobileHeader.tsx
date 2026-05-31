@@ -5,7 +5,7 @@ import { Bell } from "lucide-react";
 
 export function MobileHeader() {
   return (
-    <header className="sticky top-0 z-50 flex md:hidden items-center justify-between px-4 h-14 bg-background/80 backdrop-blur-xl border-b border-border/40 shadow-sm">
+    <header className="sticky top-0 z-50 flex md:hidden items-center justify-between px-6 h-14 bg-background/80 backdrop-blur-xl border-b border-border/40 shadow-sm">
       <Link to="/" className="shrink-0 flex items-center">
         <Logo />
       </Link>

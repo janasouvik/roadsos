@@ -5,7 +5,7 @@ const config: CapacitorConfig = {
   appName: 'roadsos',
   webDir: 'dist/client',
   server: {
-    url: 'http://10.240.125.164:8081',
+    url: 'http://localhost:8081',
     cleartext: true
   }
 };

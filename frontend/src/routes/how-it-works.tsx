@@ -46,7 +46,7 @@ function HowItWorks() {
   return (
     <>
       <section className="relative pt-10 lg:pt-16 pb-8">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 lg:px-10 grid lg:grid-cols-2 gap-10 items-center">
           <FadeUp>
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.05]">
               How <span className="text-foreground">ROAD</span><span className="gradient-text-red">SOS</span> Works

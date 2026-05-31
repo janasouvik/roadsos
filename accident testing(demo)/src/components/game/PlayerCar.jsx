@@ -9,11 +9,11 @@ import { ROAD_LEFT, ROAD_RIGHT, ROAD_WIDTH, LANE_WIDTH, LANE_COUNT, LANE_X } fro
 import { CrashSparks, TireSmoke } from './Particles'
 
 const MAX_SPEED = 0.5      // world units/frame at full throttle
-const ACCEL = 0.006
-const DECEL = 0.004
-const BRAKE_FORCE = 0.01
-const STEER_SPEED = 0.01   // changed from 0.05 for realistic slow steering
-const STEER_RETURN = 0.01  // changed from 0.05 for realistic slow return
+const ACCEL = 0.007        // slightly snappier acceleration
+const DECEL = 0.005        // quicker coast-down
+const BRAKE_FORCE = 0.012  // firmer braking
+const STEER_SPEED = 0.018  // faster touch steering response
+const STEER_RETURN = 0.016 // fast self-center when finger lifts
 
 // Car colours
 const CAR_COLORS = {
@@ -28,7 +28,7 @@ const PlayerCar = forwardRef(function PlayerCar({ onCrash }, ref) {
   const meshRef = useRef()
   const brakeLightRef = useRef()
   const steerRef = useRef(0)      // current steering value
-  const velocityRef = useRef(0)   // normalised 0–1
+  const velocityRef = useRef(0)   // normalised 0â€“1
   const posRef = useRef({ x: 0, z: 0 })
 
   const keys = useInput()
@@ -85,7 +85,7 @@ const PlayerCar = forwardRef(function PlayerCar({ onCrash }, ref) {
     setBraking(!!brake && velocityRef.current > 0.01)
 
     // Speed
-    const dt = Math.min(delta * 60, 3)
+    const dt = Math.min(delta * 60, 2.5) // tighter cap = more consistent feel
     if (accel) {
       velocityRef.current = Math.min(1, velocityRef.current + ACCEL * dt)
     } else {
@@ -153,7 +153,7 @@ const PlayerCar = forwardRef(function PlayerCar({ onCrash }, ref) {
     }
   })
 
-  const fbx = useFBX('/models/vehicles/Swift.fbx')
+  const fbx = useFBX('./models/vehicles/Swift.fbx')
   
   // Clone the model and get references to front wheel meshes for visual steering rotation
   const { carModel, frontLeftWheel, frontRightWheel } = React.useMemo(() => {
@@ -177,7 +177,7 @@ const PlayerCar = forwardRef(function PlayerCar({ onCrash }, ref) {
 
   return (
     <group ref={meshRef} position={[0, 0, 0]}>
-      {/* ── Car Model ── */}
+      {/* â”€â”€ Car Model â”€â”€ */}
       <group rotation={[0, 0, 0]} scale={0.01} position={[0, -0.5, 0]} visible={cameraMode === 'tp'}>
         <primitive object={carModel} />
       </group>
@@ -190,6 +190,7 @@ const PlayerCar = forwardRef(function PlayerCar({ onCrash }, ref) {
 })
 
 // Preload the model
-useFBX.preload('/models/vehicles/Swift.fbx')
+useFBX.preload('./models/vehicles/Swift.fbx')
 
 export default PlayerCar
+

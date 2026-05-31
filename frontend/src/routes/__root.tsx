@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { App } from "@capacitor/app";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ScreenOrientation } from "@capacitor/screen-orientation";
 import {
   Outlet,
   createRootRouteWithContext,
@@ -85,6 +86,15 @@ function RootComponent() {
   const isAuth = pathname === "/login" || pathname === "/signup";
 
   useEffect(() => {
+    // Force portrait mode globally for the React app
+    try {
+      ScreenOrientation.unlock().then(() => {
+        ScreenOrientation.lock({ orientation: 'portrait' }).catch(() => {});
+      }).catch(() => {});
+    } catch (e) {
+      console.log('Screen orientation not supported');
+    }
+
     let lastBackPress = 0;
     const listener = App.addListener('backButton', () => {
       if (pathname === '/') {

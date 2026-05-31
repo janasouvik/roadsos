@@ -2,7 +2,7 @@ import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ShieldPlus, MapPin, Bell, Lock, LogIn, Eye, EyeOff, Mail, AlertCircle, Loader2, ArrowLeft } from "lucide-react";
 import { AuthLayout } from "@/components/AuthLayout";
-import { GoogleIcon, AppleIcon, FacebookIcon, TwitterIcon, InstagramIcon, LinkedinIcon } from "@/components/BrandIcons";
+import { FacebookIcon, TwitterIcon, InstagramIcon, LinkedinIcon } from "@/components/BrandIcons";
 import { Logo } from "@/components/Logo";
 import { useAuth } from "@/hooks/useAuth";
 
@@ -30,7 +30,11 @@ function Login() {
     setError(null);
     const result = await login({ email, password });
     if (result.success) {
-      navigate({ to: "/dashboard" });
+      if (result.user?.role === 'USER') {
+        navigate({ to: "/services" });
+      } else {
+        navigate({ to: "/dashboard" });
+      }
     } else {
       setError(result.message);
     }
@@ -58,20 +62,6 @@ function Login() {
           Don't have an account? <Link to="/signup" className="text-brand-red font-semibold">Sign up</Link>
         </p>
 
-        <div className="mt-6 space-y-3">
-          <button className="w-full h-12 rounded-2xl border border-border bg-white/[0.02] inline-flex items-center justify-center gap-3 text-sm font-medium hover:bg-white/[0.05]">
-            <GoogleIcon className="h-5 w-5" /> Continue with Google
-          </button>
-          <button className="w-full h-12 rounded-2xl border border-border bg-white/[0.02] inline-flex items-center justify-center gap-3 text-sm font-medium hover:bg-white/[0.05]">
-            <AppleIcon className="h-5 w-5" /> Continue with Apple
-          </button>
-        </div>
-
-        <div className="flex items-center gap-3 my-6">
-          <div className="h-px flex-1 bg-border" />
-          <span className="text-xs text-muted-foreground">or</span>
-          <div className="h-px flex-1 bg-border" />
-        </div>
 
         {error && (
           <div className="mb-4 rounded-xl p-3 flex items-center gap-2 bg-red-500/10 border border-red-500/20 text-red-400 text-sm">

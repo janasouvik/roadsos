@@ -10,8 +10,6 @@ import { cn } from "@/lib/utils";
 const defaultLinks = [
   { to: "/", label: "Home" },
   { to: "/services", label: "Services" },
-  { to: "/how-it-works", label: "How It Works" },
-  { to: "/features", label: "Features" },
   { to: "/about", label: "About Us" },
   { to: "/contact", label: "Contact" },
 ] as const;

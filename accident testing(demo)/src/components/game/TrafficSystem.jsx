@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from 'react'
+﻿import React, { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import * as THREE from 'three'
 import { ROAD_WIDTH, LANE_COUNT, LANE_WIDTH, LANE_X } from './Road'
@@ -11,15 +11,15 @@ const SPAWN_AHEAD = 400
 const DESPAWN_BEHIND = 50
 
 const VEHICLE_TYPES = [
-  { name: 'Ambulance', w: 2.0, h: 1.5, d: 5.5, speed: [0.15, 0.28], file: '/models/vehicles/Ambulance.fbx' },
-  { name: 'Bus',       w: 2.2, h: 1.8, d: 10.0, speed: [0.1, 0.2],  file: '/models/vehicles/CHD Bus.fbx' },
-  { name: 'Maruti',    w: 1.6, h: 0.7, d: 3.4, speed: [0.18, 0.35], file: '/models/vehicles/Maruti800.fbx' },
-  { name: 'Nano',      w: 1.5, h: 0.7, d: 3.0, speed: [0.15, 0.3],  file: '/models/vehicles/Nano.fbx' },
-  { name: 'Pickup',    w: 2.1, h: 1.2, d: 5.2, speed: [0.16, 0.32], file: '/models/vehicles/Pick-up Truck.fbx' },
-  { name: 'Safari',    w: 2.0, h: 0.9, d: 4.2, speed: [0.17, 0.33], file: '/models/vehicles/Safari.fbx' },
-  { name: 'Tempo',     w: 1.9, h: 1.1, d: 4.8, speed: [0.12, 0.25], file: '/models/vehicles/Tempo.fbx' },
-  { name: 'Truck',     w: 2.2, h: 1.4, d: 8.0, speed: [0.12, 0.25], file: '/models/vehicles/Truck.fbx' },
-  { name: 'VW',        w: 1.7, h: 0.7, d: 3.6, speed: [0.2, 0.38],  file: '/models/vehicles/volkswagen.fbx' },
+  { name: 'Ambulance', w: 2.0, h: 1.5, d: 5.5, speed: [0.15, 0.28], file: './models/vehicles/Ambulance.fbx' },
+  { name: 'Bus',       w: 2.2, h: 1.8, d: 10.0, speed: [0.1, 0.2],  file: './models/vehicles/CHD Bus.fbx' },
+  { name: 'Maruti',    w: 1.6, h: 0.7, d: 3.4, speed: [0.18, 0.35], file: './models/vehicles/Maruti800.fbx' },
+  { name: 'Nano',      w: 1.5, h: 0.7, d: 3.0, speed: [0.15, 0.3],  file: './models/vehicles/Nano.fbx' },
+  { name: 'Pickup',    w: 2.1, h: 1.2, d: 5.2, speed: [0.16, 0.32], file: './models/vehicles/Pick-up Truck.fbx' },
+  { name: 'Safari',    w: 2.0, h: 0.9, d: 4.2, speed: [0.17, 0.33], file: './models/vehicles/Safari.fbx' },
+  { name: 'Tempo',     w: 1.9, h: 1.1, d: 4.8, speed: [0.12, 0.25], file: './models/vehicles/Tempo.fbx' },
+  { name: 'Truck',     w: 2.2, h: 1.4, d: 8.0, speed: [0.12, 0.25], file: './models/vehicles/Truck.fbx' },
+  { name: 'VW',        w: 1.7, h: 0.7, d: 3.6, speed: [0.2, 0.38],  file: './models/vehicles/volkswagen.fbx' },
 ]
 
 // Preload
@@ -154,7 +154,7 @@ export default function TrafficSystem({ playerRef, playerZRef }) {
         return
       }
 
-      // ── Collision & near-miss ──
+      // â”€â”€ Collision & near-miss â”€â”€
       if (playerRef.current?.isCrashed?.()) return
 
       const visualX = ref3d ? ref3d.position.x : v.x
@@ -209,3 +209,4 @@ export default function TrafficSystem({ playerRef, playerZRef }) {
     </>
   )
 }
+

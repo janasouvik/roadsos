@@ -1,14 +1,14 @@
-import { useRef, useEffect } from 'react'
+﻿import { useRef, useEffect } from 'react'
 import { useGameStore } from '../store/gameStore'
 
 // Shared audio elements to avoid recreating them constantly
 const audioElements = {
-  enginePickup: new Audio('/sounds/PickUpTruckMusic.wav'),
-  crash: new Audio('/sounds/CarCrashSound.wav'),
-  skid: new Audio('/sounds/SkidBreakMusic.wav'),
-  bgm: new Audio('/sounds/RacingLevelMusic.wav'),
-  menuMusic: new Audio('/sounds/MainMenuMusic.mp3'),
-  click: new Audio('/sounds/ButtonClickSound.wav'),
+  enginePickup: new Audio('./sounds/PickUpTruckMusic.wav'),
+  crash: new Audio('./sounds/CarCrashSound.wav'),
+  skid: new Audio('./sounds/SkidBreakMusic.wav'),
+  bgm: new Audio('./sounds/RacingLevelMusic.wav'),
+  menuMusic: new Audio('./sounds/MainMenuMusic.mp3'),
+  click: new Audio('./sounds/ButtonClickSound.wav'),
 }
 
 // Pre-configure loops
@@ -94,7 +94,7 @@ export function useAudio() {
 
   const playNearMiss = () => {
     if (!soundEnabled) return
-    const tempSkid = new Audio('/sounds/SkidBreakMusic.wav')
+    const tempSkid = new Audio('./sounds/SkidBreakMusic.wav')
     tempSkid.volume = 0.4
     tempSkid.play().catch(() => {})
   }
@@ -117,3 +117,4 @@ export function useAudio() {
 
   return { updateEngineState, setBraking, playCrash, playNearMiss, playClick }
 }
+

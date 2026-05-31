@@ -2,7 +2,6 @@ import { useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ShieldPlus, MapPin, Bell, Users, Eye, EyeOff, Mail, User, Phone, Lock, UserPlus, Check, ShieldCheck, AlertCircle, Loader2, ArrowLeft, ArrowRight, Activity, Heart, Car, Calendar, FileText, Clipboard } from "lucide-react";
 import { AuthLayout } from "@/components/AuthLayout";
-import { GoogleIcon, AppleIcon } from "@/components/BrandIcons";
 import { useAuth } from "@/hooks/useAuth";
 import { toast } from "sonner";
 
@@ -200,7 +199,7 @@ function Signup() {
 
     if (result.success) {
       toast.success("Account created successfully!");
-      navigate({ to: "/dashboard" });
+      navigate({ to: "/services" });
     } else {
       setError(result.message);
     }

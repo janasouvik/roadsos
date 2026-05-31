@@ -10,6 +10,7 @@ import { HospitalDashboard } from "@/components/HospitalDashboard";
 import { sosApi, SosRequest } from "@/lib/api";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 export const Route = createFileRoute("/dashboard")({
   component: Dashboard,
@@ -70,7 +71,101 @@ function Dashboard() {
     if (!isLoading && !user) {
       navigate({ to: "/login" });
     }
+    // Force portrait mode for the dashboard
+    try {
+      ScreenOrientation.unlock().then(() => {
+        ScreenOrientation.lock({ orientation: 'portrait' }).catch(() => {});
+      }).catch(() => {});
+    } catch (e) {
+      console.log('Screen orientation not supported');
+    }
   }, [user, isLoading, navigate]);
+
+  // Check for auto-triggered SOS from game simulation
+  useEffect(() => {
+    if (!user || isLocating || isSubmitting) return;
+
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get('accident') === 'true') {
+      const accidentTriggered = sessionStorage.getItem('accident_triggered');
+      if (!accidentTriggered) {
+        sessionStorage.setItem('accident_triggered', 'true');
+        
+        const speed = searchParams.get('speed') || 'Unknown';
+        const overtakes = searchParams.get('overtakes') || '0';
+        const distance = searchParams.get('distance') || '0';
+        
+        const autoDescription = `SIMULATED ACCIDENT DETECTED. Impact Speed: ${speed} MPH. Distance Travelled: ${distance}. Overtakes: ${overtakes}`;
+        
+        setIsSosModalOpen(true);
+        setIsLocating(true);
+        setSosType('AMBULANCE');
+        setSosDescription(autoDescription);
+        setAddress("Acquiring GPS Signal...");
+
+        const triggerCountdown = (lat: number, lng: number, addr: string) => {
+          setAccidentCoords({ latitude: lat, longitude: lng });
+          setAddress(addr);
+          setSosDescription(autoDescription);
+          setAccidentSosTimer(10); // Start 10s countdown
+          setIsSosModalOpen(false); // Close any normal modal
+          setIsLocating(false);
+        };
+
+        if (!navigator.geolocation) {
+          toast.error("Geolocation is not supported by your browser. Using simulated location.");
+          const lat = 12.82739;
+          const lng = 77.58999;
+          setCoords({ latitude: lat, longitude: lng });
+          setIsLocating(false);
+          
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`, { headers: { 'User-Agent': 'ROADSOS-Emergency-Beacon' } })
+            .then(r => r.json())
+            .then(data => {
+              const addr = data?.display_name || `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`;
+              triggerCountdown(lat, lng, addr);
+            })
+            .catch(() => triggerCountdown(lat, lng, `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`));
+          
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const lat = position.coords.latitude;
+            const lng = position.coords.longitude;
+            setCoords({ latitude: lat, longitude: lng });
+            setIsLocating(false);
+            
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`, { headers: { 'User-Agent': 'ROADSOS-Emergency-Beacon' } })
+              .then(r => r.json())
+              .then(data => {
+                const addr = data?.display_name || `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`;
+                triggerCountdown(lat, lng, addr);
+              })
+              .catch(() => triggerCountdown(lat, lng, `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`));
+          },
+          (error) => {
+            console.error("Geolocation error:", error);
+            toast.error("GPS Signal Timeout. Using default emergency coordinates.");
+            const lat = 12.82739;
+            const lng = 77.58999;
+            setCoords({ latitude: lat, longitude: lng });
+            setIsLocating(false);
+            
+            fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json&accept-language=en`, { headers: { 'User-Agent': 'ROADSOS-Emergency-Beacon' } })
+              .then(r => r.json())
+              .then(data => {
+                const addr = data?.display_name || `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`;
+                triggerCountdown(lat, lng, addr);
+              })
+              .catch(() => triggerCountdown(lat, lng, `GPS Position (Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)})`));
+          },
+          { enableHighAccuracy: true, timeout: 5000 }
+        );
+      }
+    }
+  }, [user]);
 
   useEffect(() => {
     if (user) {
@@ -222,8 +317,27 @@ function Dashboard() {
     if (accidentSosTimer === null) return;
     
     if (accidentSosTimer === 0) {
+      const lat = accidentCoords?.latitude || 12.82739;
+      const lng = accidentCoords?.longitude || 77.58999;
+      const isGameCrash = sosDescription && sosDescription.includes("SIMULATED");
+      const desc = isGameCrash ? sosDescription : "ADMIN_TRIGGERED_COLLISION_ALERT";
+      
+      sosApi.create({
+        latitude: lat,
+        longitude: lng,
+        emergencyType: "AMBULANCE",
+        address: address || "Kaggalipura Road",
+        description: desc
+      }).then(res => {
+        if (res.success) {
+          toast.success("🚨 Emergency SOS Alert Transmitted!");
+          fetchSosData();
+        }
+      }).catch(err => toast.error(err.message || "Failed to transmit SOS"));
+      
       setAccidentSosTimer(null);
       setAccidentCoords(null);
+      if (isGameCrash) setSosDescription("");
       return;
     }
 
@@ -233,7 +347,7 @@ function Dashboard() {
     }, 1000);
 
     return () => clearTimeout(t);
-  }, [accidentSosTimer, accidentCoords, address]);
+  }, [accidentSosTimer, accidentCoords, address, sosDescription]);
 
   if (isLoading || !user) {
     return (
@@ -533,6 +647,7 @@ function Dashboard() {
 
                 {/* Submit button */}
                 <button
+                  id="auto-submit-sos-btn"
                   type="submit"
                   disabled={isLocating || isSubmitting}
                   className="w-full h-12 btn-emergency rounded-2xl text-sm font-extrabold uppercase tracking-wider inline-flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
@@ -586,10 +701,12 @@ function Dashboard() {
                 
                 <div>
                   <h2 className="text-2xl font-extrabold text-brand-red uppercase tracking-wider">
-                    🚨 Admin Dispatching SOS!
+                    🚨 {sosDescription?.includes("SIMULATED") ? "Crash Detected!" : "Admin Dispatching SOS!"}
                   </h2>
                   <p className="text-sm text-muted-foreground mt-2">
-                    An emergency accident response dispatch has been initiated by the administrator.
+                    {sosDescription?.includes("SIMULATED") 
+                      ? "A simulated collision was detected. Broadcasting emergency alert to authorities..."
+                      : "An emergency accident response dispatch has been initiated by the administrator."}
                   </p>
                 </div>
                 

@@ -1,4 +1,4 @@
-import React, { useRef, useMemo, useEffect } from 'react'
+﻿import React, { useRef, useMemo, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 import { useFBX } from '@react-three/drei'
 import { useGameStore } from '../../store/gameStore'
@@ -14,10 +14,10 @@ const LANE_WIDTH     = ROAD_WIDTH / LANE_COUNT
 export const LANE_X = (lane) => ROAD_LEFT + LANE_WIDTH * lane + LANE_WIDTH / 2
 
 // Preload the city scene
-useFBX.preload('/models/city/City Scene.fbx')
+useFBX.preload('./models/city/City Scene.fbx')
 
 export function Road({ playerZRef }) {
-  const fbx = useFBX('/models/city/City Scene.fbx')
+  const fbx = useFBX('./models/city/City Scene.fbx')
   const gameState = useGameStore(s => s.gameState)
 
   // Calculate bounding box and create clones for instancing
@@ -98,3 +98,4 @@ export function Road({ playerZRef }) {
 }
 
 export { ROAD_LEFT, ROAD_RIGHT, ROAD_WIDTH, LANE_WIDTH, LANE_COUNT }
+

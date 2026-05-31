@@ -11,6 +11,7 @@ import { SafetyBannerCTA } from "@/components/SafetyBannerCTA";
 import { fadeUp } from "@/lib/motion";
 import { useState, useRef } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { ScreenOrientation } from '@capacitor/screen-orientation';
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -42,18 +43,15 @@ const why = [
 
 function Home() {
   const { user } = useAuth();
-  const [viewMode, setViewMode] = useState<'IMAGE' | 'GAME'>('IMAGE');
-  const iframeRef = useRef<HTMLIFrameElement>(null);
 
-  const handleIframeLoad = () => {
-    if (iframeRef.current && user) {
-      iframeRef.current.contentWindow?.postMessage({
-        type: 'AUTO_LOGIN',
-        name: user.fullName,
-        phone: user.phone || '',
-        carNo: 'KA-05-MH-9999'
-      }, '*');
+  const handleDemoClick = async () => {
+    sessionStorage.removeItem('accident_triggered');
+    try {
+      await ScreenOrientation.lock({ orientation: 'landscape' });
+    } catch (e) {
+      console.log('Screen orientation lock failed or not supported in this environment');
     }
+    window.location.href = '/game/index.html';
   };
 
   return (
@@ -83,10 +81,10 @@ function Home() {
                   <Phone className="h-4 w-4" /> Find Emergency Services
                 </button>
                 <button 
-                  onClick={() => setViewMode(viewMode === 'IMAGE' ? 'GAME' : 'IMAGE')}
+                  onClick={handleDemoClick}
                   className="h-14 px-7 rounded-full font-semibold btn-ghost-glass inline-flex items-center justify-center gap-2"
                 >
-                  {viewMode === 'IMAGE' ? 'Demo' : 'Close Demo'}
+                  Demo
                   <span className="h-7 w-7 rounded-full btn-emergency flex items-center justify-center">
                     <Play className="h-3 w-3 ml-0.5" fill="currentColor" />
                   </span>
@@ -114,35 +112,20 @@ function Home() {
                 transition={{ duration: 0.8 }}
                 className="relative rounded-3xl overflow-hidden border border-border/60 aspect-[4/3] lg:aspect-[5/6] bg-black"
               >
-                {viewMode === 'GAME' ? (
-                  <iframe 
-                    ref={iframeRef}
-                    src="/game/index.html" 
-                    onLoad={handleIframeLoad}
-                    className="w-full h-full border-none relative z-20"
-                  />
-                ) : (
-                  <>
-                    <img src={heroImg} alt="Emergency response scene at night" className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
-                  </>
-                )}
+                <img src={heroImg} alt="Emergency response scene at night" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
               </motion.div>
-              {viewMode === 'IMAGE' && (
-                <div className="hidden lg:block absolute -right-4 top-10 z-10">
-                  <EmergencyServicesCard />
-                </div>
-              )}
+              <div className="hidden lg:block absolute -right-4 top-10 z-10">
+                <EmergencyServicesCard />
+              </div>
             </div>
           </div>
 
           {/* mobile EmergencyServicesCard */}
-          {viewMode === 'IMAGE' && (
-            <div className="lg:hidden mt-8 flex justify-center">
-              <EmergencyServicesCard />
-            </div>
-          )}
+          <div className="lg:hidden mt-8 flex justify-center">
+            <EmergencyServicesCard />
+          </div>
         </div>
       </section>
 

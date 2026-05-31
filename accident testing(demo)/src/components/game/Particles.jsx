@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from 'react'
+﻿import React, { useRef, useEffect } from 'react'
 import { useFrame } from '@react-three/fiber'
 
 const COUNT = 80
@@ -147,3 +147,4 @@ export function ExhaustFire({ activeRef, x = 0 }) {
     </>
   )
 }
+

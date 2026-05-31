@@ -8,11 +8,13 @@ export function GlassCard({
   className,
   hover = true,
   glow,
+  onClick,
 }: {
   children: ReactNode;
   className?: string;
   hover?: boolean;
   glow?: "red" | "blue" | "green" | "purple" | "orange";
+  onClick?: () => void;
 }) {
   const glowMap: Record<string, string> = {
     red: "hover:shadow-[0_20px_60px_-20px_oklch(0.62_0.24_27/0.5)]",
@@ -27,6 +29,7 @@ export function GlassCard({
       variants={fadeUp}
       whileHover={hover ? { y: -4, scale: 1.015 } : undefined}
       transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      onClick={onClick}
       className={cn(
         "glass-card rounded-3xl p-6 transition-all duration-300",
         glow && glowMap[glow],

@@ -13,8 +13,6 @@ import { Route as SignupRouteImport } from './routes/signup'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
-import { Route as HowItWorksRouteImport } from './routes/how-it-works'
-import { Route as FeaturesRouteImport } from './routes/features'
 import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AboutRouteImport } from './routes/about'
@@ -38,16 +36,6 @@ const ProfileRoute = ProfileRouteImport.update({
 const LoginRoute = LoginRouteImport.update({
   id: '/login',
   path: '/login',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const HowItWorksRoute = HowItWorksRouteImport.update({
-  id: '/how-it-works',
-  path: '/how-it-works',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FeaturesRoute = FeaturesRouteImport.update({
-  id: '/features',
-  path: '/features',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DashboardRoute = DashboardRouteImport.update({
@@ -76,8 +64,6 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/features': typeof FeaturesRoute
-  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
@@ -88,8 +74,6 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/features': typeof FeaturesRoute
-  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
@@ -101,8 +85,6 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/dashboard': typeof DashboardRoute
-  '/features': typeof FeaturesRoute
-  '/how-it-works': typeof HowItWorksRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
   '/services': typeof ServicesRoute
@@ -115,8 +97,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/dashboard'
-    | '/features'
-    | '/how-it-works'
     | '/login'
     | '/profile'
     | '/services'
@@ -127,8 +107,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/dashboard'
-    | '/features'
-    | '/how-it-works'
     | '/login'
     | '/profile'
     | '/services'
@@ -139,8 +117,6 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/dashboard'
-    | '/features'
-    | '/how-it-works'
     | '/login'
     | '/profile'
     | '/services'
@@ -152,8 +128,6 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   ContactRoute: typeof ContactRoute
   DashboardRoute: typeof DashboardRoute
-  FeaturesRoute: typeof FeaturesRoute
-  HowItWorksRoute: typeof HowItWorksRoute
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
   ServicesRoute: typeof ServicesRoute
@@ -188,20 +162,6 @@ declare module '@tanstack/react-router' {
       path: '/login'
       fullPath: '/login'
       preLoaderRoute: typeof LoginRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/how-it-works': {
-      id: '/how-it-works'
-      path: '/how-it-works'
-      fullPath: '/how-it-works'
-      preLoaderRoute: typeof HowItWorksRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/features': {
-      id: '/features'
-      path: '/features'
-      fullPath: '/features'
-      preLoaderRoute: typeof FeaturesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard': {
@@ -240,8 +200,6 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   ContactRoute: ContactRoute,
   DashboardRoute: DashboardRoute,
-  FeaturesRoute: FeaturesRoute,
-  HowItWorksRoute: HowItWorksRoute,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
   ServicesRoute: ServicesRoute,

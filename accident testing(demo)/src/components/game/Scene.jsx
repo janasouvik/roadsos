@@ -1,8 +1,6 @@
 import React, { useRef, Suspense } from 'react'
 import { Canvas } from '@react-three/fiber'
 import { PerformanceMonitor } from '@react-three/drei'
-import { EffectComposer, Bloom, ChromaticAberration } from '@react-three/postprocessing'
-import { BlendFunction } from 'postprocessing'
 import * as THREE from 'three'
 import { useGameStore } from '../../store/gameStore'
 
@@ -25,22 +23,6 @@ function GameScene({ playerRef }) {
         <TrafficSystem playerRef={playerRef} />
       )}
       <CameraRig playerRef={playerRef} />
-
-      {/* Post-processing */}
-      <EffectComposer>
-        <Bloom
-          intensity={0.4}
-          luminanceThreshold={0.7}
-          luminanceSmoothing={0.9}
-          blendFunction={BlendFunction.ADD}
-        />
-        {speed > 180 && (
-          <ChromaticAberration
-            offset={[0.0008 * (speed / 320), 0.0002]}
-            blendFunction={BlendFunction.NORMAL}
-          />
-        )}
-      </EffectComposer>
     </>
   )
 }
@@ -50,10 +32,11 @@ export default function Scene() {
 
   return (
     <Canvas
+      dpr={[1, 1.5]}
       shadows
       camera={{ fov: 65, near: 0.1, far: 600, position: [0, 5.5, 13] }}
       gl={{
-        antialias: true,
+        antialias: false,
         toneMapping: THREE.ACESFilmicToneMapping,
         toneMappingExposure: 1.0,
         outputColorSpace: THREE.SRGBColorSpace,
@@ -68,3 +51,4 @@ export default function Scene() {
     </Canvas>
   )
 }
+

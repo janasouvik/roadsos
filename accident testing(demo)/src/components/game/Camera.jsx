@@ -61,8 +61,9 @@ export default function CameraRig({ playerRef }) {
     const lerpFactor = cameraMode === 'fp' ? 0.35 : LERP_POS
     camera.position.lerp(targetPos, lerpFactor)
 
-    // Eliminate Z-axis speed lag in third-person view to keep the camera perfectly close while driving
+    // Eliminate X and Z-axis speed lag in third-person view to keep the camera perfectly rigid
     if (cameraMode === 'tp') {
+      camera.position.x = targetPos.x
       camera.position.z = targetPos.z
     }
  
@@ -82,3 +83,4 @@ export default function CameraRig({ playerRef }) {
  
   return null
 }
+

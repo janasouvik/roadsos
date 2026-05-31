@@ -19,7 +19,6 @@ export function MobileBottomNav() {
     links.push({ to: "/dashboard", label: "Dashboard", icon: LayoutDashboard });
   } else {
     links.push({ to: "/services", label: "Emergency", icon: ShieldPlus });
-    links.push({ to: "/features", label: "Features", icon: Grid });
   }
 
   // Profile link is always last

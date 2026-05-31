@@ -1,4 +1,4 @@
-import React, { useMemo, useRef } from 'react'
+﻿import React, { useMemo, useRef } from 'react'
 import { Sky, Cloud } from '@react-three/drei'
 import { useFrame } from '@react-three/fiber'
 import { useGameStore } from '../../store/gameStore'
@@ -65,3 +65,4 @@ export default function Environment({ playerRef }) {
     </group>
   )
 }
+

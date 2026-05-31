@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react'
+﻿import React, { Suspense } from 'react'
 import { AnimatePresence } from 'framer-motion'
 import { useGameStore } from './store/gameStore'
 import Scene from './components/game/Scene'
@@ -44,3 +44,4 @@ export default function App() {
     </div>
   )
 }
+

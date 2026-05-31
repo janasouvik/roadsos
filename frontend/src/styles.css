@@ -1,4 +1,4 @@
-@import "tailwindcss" source(none);
+@import "tailwindcss";
 @source "../src";
 @import "tw-animate-css";
 
@@ -196,6 +196,14 @@
     background: oklch(1 0 0 / 0.08);
     border-color: oklch(1 0 0 / 0.2);
   }
+  .light .btn-ghost-glass {
+    background: oklch(0.18 0.04 265 / 0.04);
+    border-color: oklch(0.18 0.04 265 / 0.1);
+  }
+  .light .btn-ghost-glass:hover {
+    background: oklch(0.18 0.04 265 / 0.08);
+    border-color: oklch(0.18 0.04 265 / 0.2);
+  }
 
   .glow-red { box-shadow: 0 0 60px -10px oklch(0.62 0.24 27 / 0.5); }
   .glow-blue { box-shadow: 0 0 60px -10px oklch(0.6 0.22 260 / 0.5); }
@@ -226,6 +234,11 @@
       linear-gradient(90deg, oklch(1 0 0 / 0.04) 1px, transparent 1px);
     background-size: 48px 48px;
     mask-image: radial-gradient(ellipse at center, black 30%, transparent 75%);
+  }
+  .light .ambient-grid {
+    background-image:
+      linear-gradient(oklch(0.18 0.04 265 / 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, oklch(0.18 0.04 265 / 0.04) 1px, transparent 1px);
   }
 
   .input-glass {

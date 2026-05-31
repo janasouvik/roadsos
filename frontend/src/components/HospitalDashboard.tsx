@@ -180,7 +180,7 @@ export function HospitalDashboard() {
           className={`flex items-center justify-between p-4 rounded-xl font-medium transition-colors ${
             activeTab === "sos"
               ? "bg-brand-red text-white"
-              : "bg-white/5 hover:bg-white/10"
+              : "dark:bg-white/5 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white"
           }`}
         >
           <div className="flex items-center gap-3">
@@ -188,7 +188,7 @@ export function HospitalDashboard() {
             Trauma Alerts
           </div>
           {sosRequests.filter(r => r.status === 'PENDING').length > 0 && (
-            <span className="bg-white text-brand-red px-2 py-0.5 text-xs font-bold rounded-full animate-bounce">
+            <span className="bg-white text-brand-red px-2 py-0.5 text-xs font-bold rounded-full animate-bounce shadow-sm">
               {sosRequests.filter(r => r.status === 'PENDING').length}
             </span>
           )}
@@ -199,7 +199,7 @@ export function HospitalDashboard() {
           className={`flex items-center gap-3 p-4 rounded-xl font-medium transition-colors ${
             activeTab === "users"
               ? "bg-brand-red text-white"
-              : "bg-white/5 hover:bg-white/10"
+              : "dark:bg-white/5 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white"
           }`}
         >
           <User className="h-5 w-5" />
@@ -211,7 +211,7 @@ export function HospitalDashboard() {
           className={`flex items-center gap-3 p-4 rounded-xl font-medium transition-colors ${
             activeTab === "admins"
               ? "bg-brand-red text-white"
-              : "bg-white/5 hover:bg-white/10"
+              : "dark:bg-white/5 bg-gray-100 hover:bg-gray-200 dark:hover:bg-white/10 text-gray-900 dark:text-white"
           }`}
         >
           <Shield className="h-5 w-5" />
@@ -242,7 +242,7 @@ export function HospitalDashboard() {
               </div>
 
               {/* Filters Toolbar */}
-              <div className="flex flex-wrap items-center gap-3 p-3 rounded-2xl border border-white/5 bg-white/[0.02] text-xs">
+              <div className="flex flex-wrap items-center gap-3 p-3 rounded-2xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.02] bg-gray-50 text-xs">
                 <div className="flex items-center gap-2 text-muted-foreground mr-2">
                   <Filter className="h-3.5 w-3.5" /> Filters:
                 </div>
@@ -251,7 +251,7 @@ export function HospitalDashboard() {
                 <select
                   value={statusFilter}
                   onChange={(e) => setStatusFilter(e.target.value)}
-                  className="bg-black/50 border border-white/10 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer text-white"
+                  className="dark:bg-black/50 bg-white border dark:border-white/10 border-gray-300 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer text-gray-900 dark:text-white"
                 >
                   <option value="ALL" className="bg-[#0f172a]">All Statuses</option>
                   <option value="PENDING" className="bg-[#0f172a]">Pending</option>
@@ -265,7 +265,7 @@ export function HospitalDashboard() {
                 <select
                   value={severityFilter}
                   onChange={(e) => setSeverityFilter(e.target.value)}
-                  className="bg-black/50 border border-white/10 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer text-white"
+                  className="dark:bg-black/50 bg-white border dark:border-white/10 border-gray-300 rounded-lg px-2.5 py-1.5 outline-none cursor-pointer text-gray-900 dark:text-white"
                 >
                   <option value="ALL" className="bg-[#0f172a]">All Severities</option>
                   <option value="LOW" className="bg-[#0f172a]">Low</option>
@@ -291,7 +291,7 @@ export function HospitalDashboard() {
                         className={`p-5 rounded-2xl border transition-all ${
                           isCriti && req.status === 'PENDING'
                             ? "bg-red-500/5 border-red-500/30 hover:border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.05)]"
-                            : "bg-white/5 border-white/10 hover:border-white/20"
+                            : "dark:bg-white/5 bg-gray-50 border-gray-200 dark:border-white/10 dark:hover:border-white/20 hover:border-gray-300 shadow-sm"
                         }`}
                       >
                         <div className="flex flex-col lg:flex-row justify-between gap-4">
@@ -312,12 +312,12 @@ export function HospitalDashboard() {
                             {/* Patient Medical parameters */}
                             <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
                               <div>
-                                <div className="font-semibold text-lg flex items-center gap-2">
+                                <div className="font-semibold text-lg flex items-center gap-2 text-gray-900 dark:text-white">
                                   <User className="h-4.5 w-4.5 text-muted-foreground" />
                                   {req.user?.fullName || "Anonymous Patient"}
                                 </div>
                                 <div className="text-xs text-muted-foreground mt-1">
-                                  Vehicle Number: <span className="font-mono text-white uppercase">{req.user?.vehicleNumber || "N/A"}</span>
+                                  Vehicle Number: <span className="font-mono text-gray-900 dark:text-white uppercase">{req.user?.vehicleNumber || "N/A"}</span>
                                 </div>
                               </div>
 
@@ -326,7 +326,7 @@ export function HospitalDashboard() {
                                   <span className="text-red-500 text-sm font-black">🩸</span>
                                   <div>
                                     <div className="text-[10px] text-muted-foreground uppercase leading-none font-bold">Blood Group</div>
-                                    <div className="font-extrabold text-white text-base leading-tight mt-0.5">{req.user?.bloodGroup || "N/A"}</div>
+                                    <div className="font-extrabold text-red-600 dark:text-white text-base leading-tight mt-0.5">{req.user?.bloodGroup || "N/A"}</div>
                                   </div>
                                 </div>
 
@@ -334,7 +334,7 @@ export function HospitalDashboard() {
                                   <span className="text-orange-500 text-sm">⚠️</span>
                                   <div>
                                     <div className="text-[10px] text-muted-foreground uppercase leading-none font-bold">Allergies</div>
-                                    <div className="font-bold text-white max-w-[120px] truncate mt-0.5" title={req.user?.allergies || "No Known Allergies"}>
+                                    <div className="font-bold text-orange-600 dark:text-white max-w-[120px] truncate mt-0.5" title={req.user?.allergies || "No Known Allergies"}>
                                       {req.user?.allergies || "None"}
                                     </div>
                                   </div>
@@ -343,15 +343,15 @@ export function HospitalDashboard() {
                             </div>
 
                             {/* Clinical History & Primary contact */}
-                            <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01] grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs text-muted-foreground">
+                            <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white grid grid-cols-1 sm:grid-cols-2 gap-3.5 text-xs text-muted-foreground">
                               <div>
-                                <strong className="text-white">Existing Diseases / Conditions:</strong>
-                                <p className="text-white/85 mt-1 font-medium">{req.user?.medicalConditions || "No chronic diseases logged."}</p>
+                                <strong className="text-gray-900 dark:text-white">Existing Diseases / Conditions:</strong>
+                                <p className="text-gray-700 dark:text-white/85 mt-1 font-medium">{req.user?.medicalConditions || "No chronic diseases logged."}</p>
                               </div>
                               <div>
-                                <strong className="text-white">Primary Emergency Contact:</strong>
-                                <p className="text-white/85 mt-1 font-semibold">{req.user?.emergencyContacts?.[0]?.name || "N/A"} ({req.user?.emergencyContacts?.[0]?.relationship || "N/A"})</p>
-                                <span className="text-white/70 font-mono mt-0.5 block flex items-center gap-1">
+                                <strong className="text-gray-900 dark:text-white">Primary Emergency Contact:</strong>
+                                <p className="text-gray-700 dark:text-white/85 mt-1 font-semibold">{req.user?.emergencyContacts?.[0]?.name || "N/A"} ({req.user?.emergencyContacts?.[0]?.relationship || "N/A"})</p>
+                                <span className="text-gray-600 dark:text-white/70 font-mono mt-0.5 flex items-center gap-1">
                                   <Phone className="h-3 w-3 text-muted-foreground" /> {req.user?.emergencyContacts?.[0]?.phone || "N/A"}
                                 </span>
                               </div>
@@ -361,7 +361,7 @@ export function HospitalDashboard() {
                             <div className="flex items-start gap-2 text-xs">
                               <MapPin className="h-4 w-4 text-brand-red shrink-0 mt-0.5" />
                               <div>
-                                <div className="text-white font-medium">{req.address || "Kaggalipura road, Bangalore"}</div>
+                                <div className="text-gray-900 dark:text-white font-medium">{req.address || "Kaggalipura road, Bangalore"}</div>
                                 <a 
                                   href={req.googleMapsLink || `https://www.google.com/maps/search/?api=1&query=${req.latitude},${req.longitude}`}
                                   target="_blank"
@@ -432,9 +432,9 @@ export function HospitalDashboard() {
               ) : (
                 <div className="grid gap-4">
                   {users.map((u) => (
-                    <div key={u.id} className="p-4 rounded-xl border border-white/10 bg-white/5 flex flex-col gap-4">
+                    <div key={u.id} className="p-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-white/5 bg-gray-50 flex flex-col gap-4 shadow-sm">
                       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                        <div className="flex flex-col gap-1">
+                        <div className="flex flex-col gap-1 text-gray-900 dark:text-white">
                           <div className="font-semibold text-lg">{u.fullName}</div>
                           <div className="text-sm text-muted-foreground flex items-center gap-2">
                             <Mail className="h-3 w-3" /> {u.email}
@@ -466,25 +466,25 @@ export function HospitalDashboard() {
                       </div>
 
                       {expandedUserId === u.id && (
-                        <div className="pt-4 mt-2 border-t border-white/10 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground animate-in fade-in duration-200">
-                          <div><strong className="text-white">Patient ID:</strong> {u.id}</div>
-                          <div><strong className="text-white">Gender:</strong> {u.gender || "Not specified"}</div>
-                          <div><strong className="text-white">Date of Birth:</strong> {u.dob || "Not specified"}</div>
-                          <div><strong className="text-white">Blood Group:</strong> <span className="text-brand-red font-extrabold">{u.bloodGroup || "Not specified"}</span></div>
-                          <div><strong className="text-white">Allergies:</strong> <span className="text-orange-400 font-bold">{u.allergies || "No Known Allergies"}</span></div>
-                          <div><strong className="text-white">Existing Diseases:</strong> {u.medicalConditions || "None"}</div>
-                          <div><strong className="text-white">Organ Donor:</strong> {u.organDonor || "No"}</div>
-                          <div><strong className="text-white">Vehicle Number:</strong> {u.vehicleNumber || "N/A"}</div>
-                          <div className="md:col-span-2"><strong className="text-white">Address:</strong> {u.address || "Not specified"}</div>
+                        <div className="pt-4 mt-2 border-t dark:border-white/10 border-gray-200 grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-muted-foreground animate-in fade-in duration-200">
+                          <div><strong className="text-gray-900 dark:text-white">Patient ID:</strong> {u.id}</div>
+                          <div><strong className="text-gray-900 dark:text-white">Gender:</strong> {u.gender || "Not specified"}</div>
+                          <div><strong className="text-gray-900 dark:text-white">Date of Birth:</strong> {u.dob || "Not specified"}</div>
+                          <div><strong className="text-gray-900 dark:text-white">Blood Group:</strong> <span className="text-brand-red font-extrabold">{u.bloodGroup || "Not specified"}</span></div>
+                          <div><strong className="text-gray-900 dark:text-white">Allergies:</strong> <span className="text-orange-600 dark:text-orange-400 font-bold">{u.allergies || "No Known Allergies"}</span></div>
+                          <div><strong className="text-gray-900 dark:text-white">Existing Diseases:</strong> {u.medicalConditions || "None"}</div>
+                          <div><strong className="text-gray-900 dark:text-white">Organ Donor:</strong> {u.organDonor || "No"}</div>
+                          <div><strong className="text-gray-900 dark:text-white">Vehicle Number:</strong> {u.vehicleNumber || "N/A"}</div>
+                          <div className="md:col-span-2"><strong className="text-gray-900 dark:text-white">Address:</strong> {u.address || "Not specified"}</div>
                           
                           {/* Emergency Contacts */}
-                          <div className="md:col-span-2 pt-2 border-t border-white/5 space-y-2">
-                            <strong className="text-white uppercase tracking-wider text-[10px]">Emergency Contacts:</strong>
+                          <div className="md:col-span-2 pt-2 border-t dark:border-white/5 border-gray-200 space-y-2">
+                            <strong className="text-gray-900 dark:text-white uppercase tracking-wider text-[10px]">Emergency Contacts:</strong>
                             {u.emergencyContacts && u.emergencyContacts.length > 0 ? (
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-1">
                                 {u.emergencyContacts.map((contact) => (
-                                  <div key={contact.id} className="p-3 rounded-lg bg-white/[0.02] border border-white/5">
-                                    <div className="font-bold text-white text-xs">{contact.name} ({contact.relationship})</div>
+                                  <div key={contact.id} className="p-3 rounded-lg dark:bg-white/[0.02] bg-white border dark:border-white/5 border-gray-200">
+                                    <div className="font-bold text-gray-900 dark:text-white text-xs">{contact.name} ({contact.relationship})</div>
                                     <div className="text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1">
                                       <Phone className="h-3 w-3" /> {contact.phone}
                                     </div>
@@ -522,8 +522,8 @@ export function HospitalDashboard() {
               ) : (
                 <div className="grid gap-4">
                   {users.map((u) => (
-                    <div key={u.id} className="p-4 rounded-xl border border-white/10 bg-white/5 flex flex-col gap-2">
-                      <div className="font-semibold text-lg">{u.fullName}</div>
+                    <div key={u.id} className="p-4 rounded-xl border dark:border-white/10 border-gray-200 dark:bg-white/5 bg-gray-50 flex flex-col gap-2 shadow-sm">
+                      <div className="font-semibold text-lg text-gray-900 dark:text-white">{u.fullName}</div>
                       <div className="text-xs text-muted-foreground flex items-center gap-2">
                         <Mail className="h-3.5 w-3.5" /> {u.email}
                       </div>
@@ -568,7 +568,7 @@ export function HospitalDashboard() {
                     +
                   </div>
                   <div>
-                    <h3 className="text-xl font-black text-white">Emergency Trauma Patient Card</h3>
+                    <h3 className="text-xl font-black text-gray-900 dark:text-white">Emergency Trauma Patient Card</h3>
                     <p className="text-xs text-muted-foreground mt-0.5">Reference ID: {selectedSos.id.substring(0, 8)}...</p>
                   </div>
                 </div>
@@ -577,74 +577,74 @@ export function HospitalDashboard() {
                   onClick={() => setSelectedSos(null)}
                   className="h-8 w-8 rounded-full btn-ghost-glass flex items-center justify-center cursor-pointer"
                 >
-                  <XCircle className="h-5 w-5 text-muted-foreground hover:text-white" />
+                  <XCircle className="h-5 w-5 text-muted-foreground hover:text-gray-900 dark:hover:text-white" />
                 </button>
               </div>
 
               {/* Injury Summary details */}
               <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/5 text-xs mb-5">
-                <div className="font-bold text-white flex items-center gap-1.5 mb-1.5">
+                <div className="font-bold text-gray-900 dark:text-white flex items-center gap-1.5 mb-1.5">
                   <Activity className="h-4.5 w-4.5 text-red-500" />
                   Incident Telemetry & Impact Details
                 </div>
-                <p className="text-white/80 leading-relaxed font-medium">{selectedSos.description || "No telemetry logged."}</p>
-                <div className="mt-2.5 flex items-center gap-4 text-white/70 font-mono text-[10px]">
-                  <span>Severity: <strong className="text-red-400 font-bold uppercase">{selectedSos.severity}</strong></span>
-                  <span>Coordinates: <strong className="text-white">{selectedSos.latitude.toFixed(5)}, {selectedSos.longitude.toFixed(5)}</strong></span>
+                <p className="text-gray-800 dark:text-white/80 leading-relaxed font-medium">{selectedSos.description || "No telemetry logged."}</p>
+                <div className="mt-2.5 flex items-center gap-4 text-gray-600 dark:text-white/70 font-mono text-[10px]">
+                  <span>Severity: <strong className="text-red-500 dark:text-red-400 font-bold uppercase">{selectedSos.severity}</strong></span>
+                  <span>Coordinates: <strong className="text-gray-900 dark:text-white">{selectedSos.latitude.toFixed(5)}, {selectedSos.longitude.toFixed(5)}</strong></span>
                 </div>
               </div>
 
               {/* Patient Profile Details */}
               <div className="space-y-4">
-                <h4 className="text-xs font-bold text-white uppercase tracking-wider">Patient Health Information</h4>
+                <h4 className="text-xs font-bold text-gray-900 dark:text-white uppercase tracking-wider">Patient Health Information</h4>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01]">
+                  <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase leading-none">Full Name</div>
-                    <div className="font-semibold text-white mt-1 text-sm">{selectedSos.user?.fullName}</div>
+                    <div className="font-semibold text-gray-900 dark:text-white mt-1 text-sm">{selectedSos.user?.fullName}</div>
                   </div>
                   
-                  <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01]">
+                  <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase leading-none">Gender / Age</div>
-                    <div className="font-semibold text-white mt-1 text-sm">{selectedSos.user?.gender || "Male"} ({selectedSos.user?.dob || "25"})</div>
+                    <div className="font-semibold text-gray-900 dark:text-white mt-1 text-sm">{selectedSos.user?.gender || "Male"} ({selectedSos.user?.dob || "25"})</div>
                   </div>
 
                   <div className="p-3.5 rounded-xl border border-red-500/20 bg-red-500/5">
-                    <div className="text-[10px] text-red-400 font-bold uppercase leading-none">Blood Group</div>
-                    <div className="font-extrabold text-white mt-1 text-lg leading-none">{selectedSos.user?.bloodGroup || "O+"}</div>
+                    <div className="text-[10px] text-red-600 dark:text-red-400 font-bold uppercase leading-none">Blood Group</div>
+                    <div className="font-extrabold text-red-600 dark:text-white mt-1 text-lg leading-none">{selectedSos.user?.bloodGroup || "O+"}</div>
                   </div>
 
                   <div className="p-3.5 rounded-xl border border-orange-500/20 bg-orange-500/5">
-                    <div className="text-[10px] text-orange-400 font-bold uppercase leading-none">Allergies</div>
-                    <div className="font-bold text-white mt-1 text-xs truncate" title={selectedSos.user?.allergies || "None"}>
+                    <div className="text-[10px] text-orange-600 dark:text-orange-400 font-bold uppercase leading-none">Allergies</div>
+                    <div className="font-bold text-orange-600 dark:text-white mt-1 text-xs truncate" title={selectedSos.user?.allergies || "None"}>
                       {selectedSos.user?.allergies || "No Known Allergies"}
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01] col-span-2">
+                  <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white col-span-2">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase leading-none">Existing Medical Conditions</div>
-                    <div className="font-semibold text-white mt-1 text-xs">{selectedSos.user?.medicalConditions || "None declared."}</div>
+                    <div className="font-semibold text-gray-900 dark:text-white mt-1 text-xs">{selectedSos.user?.medicalConditions || "None declared."}</div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01]">
+                  <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase leading-none">Organ Donor Status</div>
                     <div className="font-bold text-brand-green mt-1 text-xs">{selectedSos.user?.organDonor === "Yes" ? "Yes, Registered Donor" : "No"}</div>
                   </div>
 
-                  <div className="p-3.5 rounded-xl border border-white/5 bg-white/[0.01]">
+                  <div className="p-3.5 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.01] bg-white">
                     <div className="text-[10px] text-muted-foreground font-bold uppercase leading-none">Vehicle Number</div>
-                    <div className="font-mono text-white mt-1 text-xs uppercase">{selectedSos.user?.vehicleNumber || "N/A"}</div>
+                    <div className="font-mono text-gray-900 dark:text-white mt-1 text-xs uppercase">{selectedSos.user?.vehicleNumber || "N/A"}</div>
                   </div>
                 </div>
 
                 {/* Contacts directory */}
                 <div className="pt-2">
-                  <div className="text-[10px] font-bold text-white uppercase tracking-wider mb-2">Emergency Contacts</div>
+                  <div className="text-[10px] font-bold text-gray-900 dark:text-white uppercase tracking-wider mb-2">Emergency Contacts</div>
                   {selectedSos.user?.emergencyContacts && selectedSos.user.emergencyContacts.length > 0 ? (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       {selectedSos.user.emergencyContacts.map((contact) => (
-                        <div key={contact.id} className="p-3 rounded-xl border border-white/5 bg-white/[0.02]">
-                          <div className="font-bold text-xs text-white">{contact.name} ({contact.relationship})</div>
+                        <div key={contact.id} className="p-3 rounded-xl border dark:border-white/5 border-gray-200 dark:bg-white/[0.02] bg-white">
+                          <div className="font-bold text-xs text-gray-900 dark:text-white">{contact.name} ({contact.relationship})</div>
                           <div className="text-[11px] text-muted-foreground mt-0.5 flex items-center gap-1 font-mono">
                             <Phone className="h-3 w-3" /> {contact.phone}
                           </div>

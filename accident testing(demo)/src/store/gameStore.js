@@ -1,31 +1,31 @@
-import { create } from 'zustand'
+﻿import { create } from 'zustand'
 
 export const useGameStore = create((set, get) => ({
-  // ── Game State ──
+  // â”€â”€ Game State â”€â”€
   gameState: 'menu', // 'menu' | 'playing' | 'paused' | 'gameover'
 
-  // ── Runtime Stats ──
+  // â”€â”€ Runtime Stats â”€â”€
   score: 0,
   speed: 0,          // km/h
   maxSpeed: 0,
   distance: 0,
-  position: 20,      // 1–20 racer ranking
+  position: 20,      // 1â€“20 racer ranking
   totalRacers: 20,
   overtakes: 0,
   nearMisses: 0,
   combo: 1,
 
-  // ── Settings ──
+  // â”€â”€ Settings â”€â”€
   playerColor: 'red',
   timeOfDay: 'day',    // 'day' | 'sunset' | 'night'
   trafficDensity: 'medium', // 'low' | 'medium' | 'high'
   soundEnabled: true,
   cameraMode: 'tp',     // 'tp' | 'fp'
 
-  // ── Best Score ──
+  // â”€â”€ Best Score â”€â”€
   bestScore: parseInt(localStorage.getItem('htr3d_best') || '0'),
 
-  // ── Actions ──
+  // â”€â”€ Actions â”€â”€
   startGame: () => set({
     gameState: 'playing',
     score: 0,
@@ -88,3 +88,4 @@ export const useGameStore = create((set, get) => ({
   setSoundEnabled: (v) => set({ soundEnabled: v }),
   toggleCameraMode: () => set(state => ({ cameraMode: state.cameraMode === 'tp' ? 'fp' : 'tp' })),
 }))
+

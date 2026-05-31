@@ -11,7 +11,8 @@ import { useNavigate } from "@tanstack/react-router";
 import { useAuth } from "@/hooks/useAuth";
 import { sosApi, SosRequest } from "@/lib/api";
 import { toast } from "sonner";
-
+import { Capacitor } from "@capacitor/core";
+import { ScreenOrientation } from "@capacitor/screen-orientation";
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
@@ -28,34 +29,18 @@ const sidebar = [
   { Icon: Hospital, label: "Hospitals", color: "#ff1e2d", active: true },
   { Icon: Ambulance, label: "Ambulances", color: "#2563ff" },
   { Icon: Shield, label: "Police Stations", color: "#2563ff" },
-  { Icon: Truck, label: "Towing Services", color: "#22c55e" },
-  { Icon: Users, label: "Rescue Teams", color: "#f97316" },
-  { Icon: Globe, label: "Puncture Shops", color: "#9333ea" },
-  { Icon: Truck, label: "Showrooms", color: "#2563ff" },
-  { Icon: Phone, label: "Emergency Contacts", color: "#9333ea" },
-  { Icon: Droplet, label: "Blood Banks", color: "#ff1e2d" },
-  { Icon: Pill, label: "Pharmacies", color: "#22c55e" },
 ];
 
 const nearby = [
-  { Icon: Hospital, color: "#ff1e2d", name: "City Care Trauma Center", meta: "2.4 km away", badge: "Open 24/7" },
-  { Icon: Ambulance, color: "#2563ff", name: "LifeLine Ambulance", meta: "3 mins away" },
-  { Icon: Shield, color: "#2563ff", name: "Central Police Station", meta: "1.8 km away" },
-  { Icon: Users, color: "#22c55e", name: "Fast Rescue Team", meta: "4 mins away" },
-  { Icon: Truck, color: "#22c55e", name: "Quick Tow Services", meta: "2.7 km away" },
+  { Icon: Hospital, color: "#ff1e2d", name: "Hospitals", meta: "5 Nearest Hospitals" },
+  { Icon: Ambulance, color: "#2563ff", name: "Ambulances", meta: "12 Available Ambulances" },
+  { Icon: Shield, color: "#2563ff", name: "Police Stations", meta: "5 Nearest Police Stations" },
 ];
 
 const allServices = [
-  { Icon: Hospital, label: "Hospitals", desc: "Find nearest trauma centers and hospitals instantly.", color: "#ff1e2d" },
-  { Icon: Ambulance, label: "Ambulances", desc: "Get ambulance services near you in just a few taps.", color: "#2563ff" },
-  { Icon: Shield, label: "Police Stations", desc: "Find nearby police stations for immediate assistance.", color: "#2563ff" },
-  { Icon: Truck, label: "Towing Services", desc: "Locate towing services, puncture shops and mechanics.", color: "#22c55e" },
-  { Icon: Users, label: "Rescue Teams", desc: "Connect with vehicle rescue teams in your area.", color: "#f97316" },
-  { Icon: Globe, label: "Puncture Shops", desc: "Find nearby puncture shops for quick assistance.", color: "#9333ea" },
-  { Icon: Truck, label: "Showrooms", desc: "Search nearby car & bike showrooms for quick support.", color: "#2563ff" },
-  { Icon: Phone, label: "Emergency Contacts", desc: "Access important emergency contacts globally.", color: "#9333ea" },
-  { Icon: Droplet, label: "Blood Banks", desc: "Locate nearest blood banks to help save lives.", color: "#ff1e2d" },
-  { Icon: Pill, label: "Pharmacies", desc: "Find nearby pharmacies and medical stores.", color: "#22c55e" },
+  { Icon: Hospital, label: "Hospitals", desc: "Only 5 nearest hospitals", color: "#ff1e2d" },
+  { Icon: Ambulance, label: "Ambulances", desc: "Available ambulances", color: "#2563ff" },
+  { Icon: Shield, label: "Police Stations", desc: "Only 5 nearest police stations", color: "#2563ff" },
 ];
 
 function Services() {
@@ -73,8 +58,6 @@ function Services() {
   const [activeSos, setActiveSos] = useState<SosRequest | null>(null);
 
   // Simulation drive states
-  const [viewMode, setViewMode] = useState<'IMAGE' | 'GAME'>('IMAGE');
-  const iframeRef = useRef<HTMLIFrameElement>(null);
   const [accidentSosTimer, setAccidentSosTimer] = useState<number | null>(null);
   const [accidentCoords, setAccidentCoords] = useState<{ latitude: number; longitude: number } | null>(null);
   const [accidentSpeed, setAccidentSpeed] = useState<number | null>(null);
@@ -102,13 +85,24 @@ function Services() {
           if (active.address) setAddress(active.address);
           setAccidentSosTimer(10);
           playBeep();
-          toast.error("🚨 Simulated Accident Alert Dispatched by Super Admin! Initializing countdown.");
+          toast.error("⚠️ Simulated Accident Alert Dispatched by Super Admin! Initializing countdown.");
         }
       }
     } catch (err) {
-      console.error("Failed to load active SOS requests:", err);
+      console.error("Failed to fetch SOS:", err);
     }
   };
+
+  useEffect(() => {
+    // Force portrait mode for the services page
+    try {
+      ScreenOrientation.unlock().then(() => {
+        ScreenOrientation.lock({ orientation: 'portrait' }).catch(() => {});
+      }).catch(() => {});
+    } catch (e) {
+      console.log('Screen orientation not supported');
+    }
+  }, []);
 
   useEffect(() => {
     fetchActiveSos();
@@ -316,16 +310,13 @@ function Services() {
     return () => window.removeEventListener('message', handleGameMessage);
   }, [user]);
 
-  // Send user info to driving game iframe for auto-login
-  const handleIframeLoad = () => {
-    if (iframeRef.current && user) {
-      iframeRef.current.contentWindow?.postMessage({
-        type: 'AUTO_LOGIN',
-        name: user.fullName,
-        phone: user.phone || '',
-        carNo: 'KA-05-MH-9999'
-      }, '*');
+  const handleDemoClick = async () => {
+    try {
+      await ScreenOrientation.lock({ orientation: 'landscape' });
+    } catch (e) {
+      console.log('Screen orientation lock failed', e);
     }
+    window.location.href = '/game/index.html';
   };
 
   return (
@@ -343,28 +334,17 @@ function Services() {
             </p>
             <div className="mt-6">
               <button 
-                onClick={() => setViewMode(viewMode === 'IMAGE' ? 'GAME' : 'IMAGE')}
+                onClick={handleDemoClick}
                 className="px-5 h-11 rounded-full btn-ghost-glass text-xs font-bold inline-flex items-center gap-2 cursor-pointer shadow-[0_0_15px_rgba(255,255,255,0.05)] hover:border-brand-red/50 hover:text-brand-red transition-all"
               >
-                {viewMode === 'IMAGE' ? '🎮 Launch 3D Drive Simulator' : '📷 Close Simulator'}
+                🎮 Launch 3D Drive Simulator
               </button>
             </div>
           </FadeUp>
           
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7 }} className="relative rounded-3xl overflow-hidden border border-border/60 aspect-[16/10] bg-black">
-            {viewMode === 'GAME' ? (
-              <iframe 
-                ref={iframeRef}
-                src="/game/index.html" 
-                onLoad={handleIframeLoad}
-                className="w-full h-full border-none"
-              />
-            ) : (
-              <>
-                <img src={ambulanceCity} alt="Ambulance" className="w-full h-full object-cover" loading="lazy" width={1600} height={1024} />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-              </>
-            )}
+              <img src={ambulanceCity} alt="Ambulance" className="w-full h-full object-cover" loading="lazy" width={1600} height={1024} />
+              <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
           </motion.div>
         </div>
       </section>
@@ -458,7 +438,17 @@ function Services() {
               <div className="grid md:grid-cols-2 gap-5">
                 <div className="space-y-2">
                   {nearby.map((n) => (
-                    <div key={n.name} className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-border/60 hover:bg-white/[0.05] transition-colors cursor-pointer">
+                    <div 
+                      key={n.name} 
+                      onClick={() => {
+                        let t = 'AMBULANCE';
+                        if (n.name.includes('Hospital')) t = 'HOSPITAL';
+                        if (n.name.includes('Police')) t = 'POLICE';
+                        setSosType(t as any);
+                        setIsSosModalOpen(true);
+                      }}
+                      className="flex items-center gap-3 p-3 rounded-2xl bg-white/[0.02] border border-border/60 hover:bg-white/[0.05] transition-colors cursor-pointer"
+                    >
                       <div className="icon-tile h-11 w-11" style={{ color: n.color }}><n.Icon className="h-5 w-5" /></div>
                       <div className="flex-1 min-w-0">
                         <div className="font-semibold text-sm truncate">{n.name}</div>
@@ -497,7 +487,17 @@ function Services() {
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-3 xl:grid-cols-5 gap-3 md:gap-4">
             {allServices.map((s) => (
-              <GlassCard key={s.label} className="flex flex-col p-4 md:p-6">
+              <GlassCard 
+                key={s.label} 
+                className="flex flex-col p-4 md:p-6 cursor-pointer hover:bg-white/[0.05] transition-colors"
+                onClick={() => {
+                  let t = 'AMBULANCE';
+                  if (s.label.includes('Hospital')) t = 'HOSPITAL';
+                  if (s.label.includes('Police')) t = 'POLICE';
+                  setSosType(t as any);
+                  setIsSosModalOpen(true);
+                }}
+              >
                 <div className="icon-tile h-10 w-10 md:h-12 md:w-12 mb-3" style={{ color: s.color }}>
                   <s.Icon className="h-5 w-5" />
                 </div>

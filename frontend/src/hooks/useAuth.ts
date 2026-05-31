@@ -21,7 +21,7 @@ interface AuthState {
 
 interface AuthActions {
   signup: (data: SignupData) => Promise<{ success: boolean; message: string }>;
-  login: (data: LoginData) => Promise<{ success: boolean; message: string }>;
+  login: (data: LoginData) => Promise<{ success: boolean; message: string; user?: UserProfile }>;
   logout: () => Promise<void>;
   refreshUser: () => Promise<void>;
   clearError: () => void;
@@ -110,7 +110,7 @@ export function useAuth(): AuthContextValue {
       localStorage.setItem('roadsos_access_token', accessToken);
       setAccessToken(accessToken);
       setState({ user, isLoading: false, isAuthenticated: true, error: null });
-      return { success: true, message: res.message };
+      return { success: true, message: res.message, user };
     } catch (err) {
       const message = err instanceof ApiRequestError ? err.message : 'Login failed';
       setState((s) => ({ ...s, isLoading: false, error: message }));

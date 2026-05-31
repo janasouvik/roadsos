@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="accent">#F97316</color>
+    <color name="accent_dark">#EA580C</color>
+    <color name="background">#0F0F0F</color>
+    <color name="card_bg">#1E1E1E</color>
+    <color name="danger">#EF4444</color>
+    <color name="divider">#2D2D2D</color>
+    <color name="info">#3B82F6</color>
+    <color name="nav_bg">#161616</color>
+    <color name="nav_selected">#EF4444</color>
+    <color name="nav_unselected">#6B7280</color>
+    <color name="primary">#EF4444</color>
+    <color name="primary_dark">#DC2626</color>
+    <color name="primary_darker">#B91C1C</color>
+    <color name="primary_extra_light">#FEF2F2</color>
+    <color name="primary_light">#FCA5A5</color>
+    <color name="sos_glow">#FF000066</color>
+    <color name="sos_red">#FF0000</color>
+    <color name="sos_red_dark">#CC0000</color>
+    <color name="success">#22C55E</color>
+    <color name="surface">#1A1A1A</color>
+    <color name="surface_variant">#242424</color>
+    <color name="text_hint">#6B7280</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#A3A3A3</color>
+    <color name="transparent">#00000000</color>
+    <color name="warning">#F59E0B</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white_20">#33FFFFFF</color>
+    <color name="white_80">#CCFFFFFF</color>
+    <dimen name="btn_radius">12dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="screen_height">640dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <string name="active_incidents">Active Incidents</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="ai_chat_subtitle">Powered by Gemini AI</string>
+    <string name="ai_chat_title">AI Emergency Guide</string>
+    <string name="ai_greeting">Hello! I\'m Road Guardian AI. I can help you with emergency guidance, first aid steps, road safety tips, and accident reporting. How can I assist you?</string>
+    <string name="ai_guide">AI Emergency Guide</string>
+    <string name="ai_typing">Road Guardian AI is thinking...</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="app_name">Road Guardian</string>
+    <string name="app_tagline">AI Emergency Response</string>
+    <string name="back">Back</string>
+    <string name="btn_call">Call Now</string>
+    <string name="btn_login">Sign In</string>
+    <string name="cancel">Cancel</string>
+    <string name="chat_hint">Ask for emergency guidance...</string>
+    <string name="confirm">Confirm</string>
+    <string name="dashboard_greeting">Stay Safe,</string>
+    <string name="description_hint">Describe what happened...</string>
+    <string name="detecting_location">Detecting your location...</string>
+    <string name="email_hint">Email address</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="emergency_guest">Quick Emergency Access</string>
+    <string name="emergency_title">Emergency Contacts</string>
+    <string name="fire_brigade">Fire Brigade</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="incident_type">Incident Type</string>
+    <string name="live_map">Live Map</string>
+    <string name="loading">Loading...</string>
+    <string name="location_label">Location</string>
+    <string name="login_subtitle">Sign in to Road Guardian</string>
+    <string name="login_title">Welcome Back</string>
+    <string name="my_reports">My Reports</string>
+    <string name="nearby_help">Nearby Help</string>
+    <string name="no_account">Don\'t have an account? </string>
+    <string name="no_incidents">No active incidents nearby</string>
+    <string name="ok">OK</string>
+    <string name="or_continue_with">or continue with</string>
+    <string name="password_hint">Password</string>
+    <string name="police">Police</string>
+    <string name="recent_activity">Recent Activity</string>
+    <string name="register_link">Register</string>
+    <string name="report_accident">Report Accident</string>
+    <string name="report_title">Report Accident</string>
+    <string name="retry">Retry</string>
+    <string name="road_accident_helpline">Road Accident Helpline</string>
+    <string name="sos_activated">SOS ACTIVATED</string>
+    <string name="sos_btn">SOS</string>
+    <string name="sos_cancel">Cancel SOS</string>
+    <string name="sos_countdown">Sending in %d seconds</string>
+    <string name="sos_hold_hint">Hold for Emergency</string>
+    <string name="sos_location_sharing">Sharing your live location</string>
+    <string name="sos_sending">Sending emergency alert to authorities...</string>
+    <string name="sos_subtitle">Emergency Alert</string>
+    <string name="splash_tagline">Protecting Every Journey with AI</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="traffic_helpline">Traffic Helpline</string>
+    <style name="BottomNav" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="android:background">@color/nav_bg</item>
+        <item name="itemIconTint">@color/nav_selector</item>
+        <item name="itemTextColor">@color/nav_selector</item>
+        <item name="labelVisibilityMode">labeled</item>
+    </style>
+    <style name="Btn.Ghost" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Btn.Outline" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:textSize">16sp</item>
+        <item name="cornerRadius">12dp</item>
+    </style>
+    <style name="Btn.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="cornerRadius">12dp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+    </style>
+    <style name="Card.Default" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/card_bg</item>
+        <item name="cardCornerRadius">16dp</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/divider</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    <style name="Card.Emergency" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/primary_darker</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">8dp</item>
+    </style>
+    <style name="Input.Default" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/divider</item>
+        <item name="boxBackgroundColor">@color/surface_variant</item>
+        <item name="hintTextColor">@color/text_hint</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="boxCornerRadiusTopStart">12dp</item>
+        <item name="boxCornerRadiusTopEnd">12dp</item>
+        <item name="boxCornerRadiusBottomStart">12dp</item>
+        <item name="boxCornerRadiusBottomEnd">12dp</item>
+    </style>
+    <style name="Text.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/text_hint</item>
+    </style>
+    <style name="Text.Subtitle" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+    <style name="Text.Title" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Theme.RoadGuardian" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorSecondary">@color/accent</item>
+        <item name="colorSecondaryVariant">@color/accent_dark</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/nav_bg</item>
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">false</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.RoadGuardian.Splash" parent="Theme.RoadGuardian">
+        <item name="android:windowBackground">@color/background</item>
+        <item name="android:statusBarColor">@color/background</item>
+        <item name="android:navigationBarColor">@color/background</item>
+    </style>
+</resources>

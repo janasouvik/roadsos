@@ -1,0 +1,8 @@
+-keep class com.roadguardian.app.model.** { *; }
+-keep class com.roadguardian.app.ui.** { *; }
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+-dontwarn okio.**

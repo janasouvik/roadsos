@@ -1,0 +1,9 @@
+{"level":"info","message":"✅ PostgreSQL connected via Prisma","timestamp":"2026-05-26T12:49:42.913Z"}
+{"code":"ECONNREFUSED","level":"error","message":"Redis connection error:","stack":"AggregateError: \n    at internalConnectMultiple (node:net:1193:18)\n    at afterConnectMultiple (node:net:1783:7)","timestamp":"2026-05-26T12:49:42.925Z"}
+{"level":"warn","message":"⚠️ Redis connection failed. Falling back to in-memory store.","timestamp":"2026-05-26T12:49:42.926Z"}
+{"level":"info","message":"✅ Redis connected","timestamp":"2026-05-26T12:49:42.927Z"}
+{"level":"info","message":"Socket.IO server initialized","timestamp":"2026-05-26T12:49:42.933Z"}
+{"level":"info","message":"✅ Socket.IO initialized","timestamp":"2026-05-26T12:49:42.933Z"}
+{"level":"info","message":"🚀 RoadSOS Backend running on port 5000","timestamp":"2026-05-26T12:49:42.937Z"}
+{"level":"info","message":"📖 Swagger docs: http://localhost:5000/api/docs","timestamp":"2026-05-26T12:49:42.938Z"}
+{"level":"info","message":"🌍 Environment: development","timestamp":"2026-05-26T12:49:42.938Z"}

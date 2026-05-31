@@ -1,0 +1,74 @@
+<resources>
+    <string name="app_name">Road Guardian</string>
+    <string name="app_tagline">AI Emergency Response</string>
+
+    <!-- Splash -->
+    <string name="splash_tagline">Protecting Every Journey with AI</string>
+
+    <!-- Login -->
+    <string name="login_title">Welcome Back</string>
+    <string name="login_subtitle">Sign in to Road Guardian</string>
+    <string name="email_hint">Email address</string>
+    <string name="password_hint">Password</string>
+    <string name="btn_login">Sign In</string>
+    <string name="no_account">Don\'t have an account? </string>
+    <string name="register_link">Register</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="or_continue_with">or continue with</string>
+    <string name="emergency_guest">Quick Emergency Access</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_greeting">Stay Safe,</string>
+    <string name="sos_btn">SOS</string>
+    <string name="sos_subtitle">Emergency Alert</string>
+    <string name="sos_hold_hint">Hold for Emergency</string>
+    <string name="report_accident">Report Accident</string>
+    <string name="ai_guide">AI Emergency Guide</string>
+    <string name="nearby_help">Nearby Help</string>
+    <string name="emergency_contacts">Emergency Contacts</string>
+    <string name="my_reports">My Reports</string>
+    <string name="live_map">Live Map</string>
+    <string name="active_incidents">Active Incidents</string>
+    <string name="no_incidents">No active incidents nearby</string>
+    <string name="recent_activity">Recent Activity</string>
+
+    <!-- Report -->
+    <string name="report_title">Report Accident</string>
+    <string name="incident_type">Incident Type</string>
+    <string name="location_label">Location</string>
+    <string name="description_hint">Describe what happened...</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="detecting_location">Detecting your location...</string>
+
+    <!-- AI Chat -->
+    <string name="ai_chat_title">AI Emergency Guide</string>
+    <string name="ai_chat_subtitle">Powered by Gemini AI</string>
+    <string name="ai_typing">Road Guardian AI is thinking...</string>
+    <string name="chat_hint">Ask for emergency guidance...</string>
+    <string name="ai_greeting">Hello! I\'m Road Guardian AI. I can help you with emergency guidance, first aid steps, road safety tips, and accident reporting. How can I assist you?</string>
+
+    <!-- Emergency -->
+    <string name="emergency_title">Emergency Contacts</string>
+    <string name="police">Police</string>
+    <string name="ambulance">Ambulance</string>
+    <string name="fire_brigade">Fire Brigade</string>
+    <string name="traffic_helpline">Traffic Helpline</string>
+    <string name="btn_call">Call Now</string>
+    <string name="road_accident_helpline">Road Accident Helpline</string>
+
+    <!-- SOS -->
+    <string name="sos_activated">SOS ACTIVATED</string>
+    <string name="sos_sending">Sending emergency alert to authorities...</string>
+    <string name="sos_location_sharing">Sharing your live location</string>
+    <string name="sos_cancel">Cancel SOS</string>
+    <string name="sos_countdown">Sending in %d seconds</string>
+
+    <!-- Common -->
+    <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
+    <string name="loading">Loading...</string>
+    <string name="retry">Retry</string>
+    <string name="confirm">Confirm</string>
+    <string name="back">Back</string>
+</resources>

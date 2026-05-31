@@ -1,0 +1,20 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 7
+    },
+    "auditLog": "C:\\Users\\Avi\\Desktop\\files\\RoadGuardian-Backend\\roadsos-backend\\src\\logs\\.74b1575d097ae489a53697534f299db22f414de4-audit.json",
+    "files": [
+        {
+            "date": 1779590088339,
+            "name": "C:\\Users\\Avi\\Desktop\\files\\RoadGuardian-Backend\\roadsos-backend\\src\\logs\\combined-2026-05-24.log",
+            "hash": "5831411a861c3d0cf8e55a714f7f9a01ec1cc28b174f6107f17cc80ff9fbc5cd"
+        },
+        {
+            "date": 1779799763464,
+            "name": "C:\\Users\\Avi\\Desktop\\files\\RoadGuardian-Backend\\roadsos-backend\\src\\logs\\combined-2026-05-26.log",
+            "hash": "fb198aad7b73b196e1efdb7e9e8e1e61c91766165419b3c6312f3380557651cd"
+        }
+    ],
+    "hashType": "sha256"
+}

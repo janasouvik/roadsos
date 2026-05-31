@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background">
+
+    <!-- Header -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_header_gradient"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="48dp"
+        android:paddingBottom="20dp">
+
+        <ImageView android:id="@+id/backBtn" android:layout_width="40dp" android:layout_height="40dp"
+            android:src="@drawable/ic_back" android:tint="@color/white" android:padding="8dp"/>
+
+        <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Emergency Contacts" android:textColor="@color/white"
+            android:textSize="20sp" android:textStyle="bold" android:layout_marginStart="8dp"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Emergency Alert Banner -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                app:cardBackgroundColor="#1AEF4444"
+                app:cardCornerRadius="14dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="14dp">
+                    <ImageView android:layout_width="28dp" android:layout_height="28dp"
+                        android:src="@drawable/ic_warning" android:tint="@color/primary"/>
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="In life-threatening situations\nCall 112 immediately"
+                        android:textColor="@color/primary" android:textSize="13sp"
+                        android:textStyle="bold" android:layout_marginStart="12dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="National Emergency Numbers"
+                android:textColor="@color/text_primary" android:textSize="16sp"
+                android:textStyle="bold" android:layout_marginBottom="12dp"/>
+
+            <!-- Police -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/card_bg" app:cardCornerRadius="14dp"
+                app:strokeColor="@color/divider" app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <FrameLayout android:layout_width="48dp" android:layout_height="48dp">
+                        <View android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_blue"/>
+                        <ImageView android:layout_width="26dp" android:layout_height="26dp"
+                            android:layout_gravity="center" android:src="@drawable/ic_police" android:tint="@color/info"/>
+                    </FrameLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Police" android:textColor="@color/text_primary"
+                            android:textSize="16sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="100" android:textColor="@color/info" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Available 24/7" android:textColor="@color/text_hint" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/callPolice" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Call" app:backgroundTint="@color/info" app:cornerRadius="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Ambulance -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/card_bg" app:cardCornerRadius="14dp"
+                app:strokeColor="@color/divider" app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <FrameLayout android:layout_width="48dp" android:layout_height="48dp">
+                        <View android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_red"/>
+                        <ImageView android:layout_width="26dp" android:layout_height="26dp"
+                            android:layout_gravity="center" android:src="@drawable/ic_ambulance" android:tint="@color/primary"/>
+                    </FrameLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Ambulance" android:textColor="@color/text_primary"
+                            android:textSize="16sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="108" android:textColor="@color/primary" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Emergency Medical Services" android:textColor="@color/text_hint" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/callAmbulance" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Call" app:backgroundTint="@color/primary" app:cornerRadius="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Fire Brigade -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/card_bg" app:cardCornerRadius="14dp"
+                app:strokeColor="@color/divider" app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <FrameLayout android:layout_width="48dp" android:layout_height="48dp">
+                        <View android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_orange"/>
+                        <ImageView android:layout_width="26dp" android:layout_height="26dp"
+                            android:layout_gravity="center" android:src="@drawable/ic_fire" android:tint="@color/accent"/>
+                    </FrameLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Fire Brigade" android:textColor="@color/text_primary"
+                            android:textSize="16sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="101" android:textColor="@color/accent" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Fire &amp; Rescue Services" android:textColor="@color/text_hint" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/callFire" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Call" app:backgroundTint="@color/accent" app:cornerRadius="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Road Accident Helpline -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/card_bg" app:cardCornerRadius="14dp"
+                app:strokeColor="@color/divider" app:strokeWidth="1dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <FrameLayout android:layout_width="48dp" android:layout_height="48dp">
+                        <View android:layout_width="48dp" android:layout_height="48dp" android:background="@drawable/bg_icon_green"/>
+                        <ImageView android:layout_width="26dp" android:layout_height="26dp"
+                            android:layout_gravity="center" android:src="@drawable/ic_road" android:tint="@color/success"/>
+                    </FrameLayout>
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical" android:layout_marginStart="12dp">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Road Helpline" android:textColor="@color/text_primary"
+                            android:textSize="16sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="1033" android:textColor="@color/success" android:textSize="22sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="National Highways Helpline" android:textColor="@color/text_hint" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/callRoad" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:text="Call" app:backgroundTint="@color/success" app:cornerRadius="10dp"
+                        android:textColor="@color/white"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Emergency Universal -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                app:cardBackgroundColor="#1AEF4444"
+                app:cardCornerRadius="14dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="2dp">
+                <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                    android:orientation="horizontal" android:gravity="center_vertical" android:padding="16dp">
+                    <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content"
+                        android:layout_weight="1" android:orientation="vertical">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="🆘 Universal Emergency" android:textColor="@color/white"
+                            android:textSize="16sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="112" android:textColor="@color/primary" android:textSize="32sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Works from any phone" android:textColor="@color/text_secondary" android:textSize="12sp"/>
+                    </LinearLayout>
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/callEmergency" android:layout_width="wrap_content" android:layout_height="52dp"
+                        android:text="CALL\n112" app:backgroundTint="@color/primary" app:cornerRadius="12dp"
+                        android:textColor="@color/white" android:textStyle="bold" android:gravity="center"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

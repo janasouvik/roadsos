@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="screen_height">640dp</dimen>
+    <dimen name="card_radius">16dp</dimen>
+    <dimen name="btn_radius">12dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+</resources>

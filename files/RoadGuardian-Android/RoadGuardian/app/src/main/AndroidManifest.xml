@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.RoadGuardian"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".ui.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.RoadGuardian.Splash">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ui.LoginActivity" android:exported="false"/>
+        <activity android:name=".ui.RegisterActivity" android:exported="false"/>
+        <activity android:name=".ui.DashboardActivity" android:exported="false"/>
+        <activity android:name=".ui.ReportAccidentActivity" android:exported="false"/>
+        <activity android:name=".ui.AiChatActivity" android:exported="false"/>
+        <activity android:name=".ui.MapActivity" android:exported="false"/>
+        <activity android:name=".ui.EmergencyContactsActivity" android:exported="false"/>
+        <activity android:name=".ui.MyReportsActivity" android:exported="false"/>
+        <activity android:name=".ui.ProfileActivity" android:exported="false"/>
+        <activity android:name=".ui.SosActivity" android:exported="false"/>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="YOUR_GOOGLE_MAPS_API_KEY"/>
+    </application>
+
+</manifest>

@@ -1,0 +1,573 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Main Content -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="65dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/bg_header_gradient"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="52dp"
+                android:paddingBottom="32dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Stay Safe,"
+                            android:textColor="@color/primary_light"
+                            android:textSize="14sp"/>
+
+                        <TextView
+                            android:id="@+id/greetingName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Road Guardian"
+                            android:textColor="@color/white"
+                            android:textSize="22sp"
+                            android:textStyle="bold"/>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:layout_marginTop="4dp">
+
+                            <View
+                                android:layout_width="8dp"
+                                android:layout_height="8dp"
+                                android:background="@drawable/bg_dot_green"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="  AI Active • Protected"
+                                android:textColor="@color/success"
+                                android:textSize="12sp"/>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Notification Bell -->
+                    <ImageView
+                        android:id="@+id/notificationBtn"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_notification"
+                        android:tint="@color/white"
+                        android:background="@drawable/bg_icon_btn"
+                        android:padding="10dp"
+                        android:layout_marginEnd="8dp"/>
+
+                    <!-- Profile -->
+                    <ImageView
+                        android:id="@+id/profileBtn"
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:src="@drawable/ic_profile"
+                        android:tint="@color/white"
+                        android:background="@drawable/bg_icon_btn"
+                        android:padding="10dp"/>
+                </LinearLayout>
+
+                <!-- AI Status Bar -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    app:cardBackgroundColor="#22FFFFFF"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:src="@drawable/ic_ai"
+                            android:tint="@color/primary_light"/>
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="AI Guardian is monitoring your route"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:layout_marginStart="8dp"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="LIVE"
+                            android:textColor="@color/success"
+                            android:textSize="11sp"
+                            android:textStyle="bold"
+                            android:background="@drawable/bg_live_badge"
+                            android:paddingStart="6dp"
+                            android:paddingEnd="6dp"
+                            android:paddingTop="2dp"
+                            android:paddingBottom="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- SOS Button Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="32dp"
+                android:paddingBottom="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="EMERGENCY SOS"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:letterSpacing="0.15"
+                    android:layout_marginBottom="16dp"/>
+
+                <!-- SOS Pulse Ring + Button -->
+                <FrameLayout
+                    android:layout_width="180dp"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center">
+
+                    <!-- Outer pulse ring 3 -->
+                    <View
+                        android:id="@+id/sosRing3"
+                        android:layout_width="180dp"
+                        android:layout_height="180dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_sos_ring_3"
+                        android:alpha="0.2"/>
+
+                    <!-- Outer pulse ring 2 -->
+                    <View
+                        android:id="@+id/sosRing2"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_sos_ring_2"
+                        android:alpha="0.3"/>
+
+                    <!-- Outer pulse ring 1 -->
+                    <View
+                        android:id="@+id/sosRing1"
+                        android:layout_width="120dp"
+                        android:layout_height="120dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bg_sos_ring_1"
+                        android:alpha="0.5"/>
+
+                    <!-- Main SOS Button -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/sosButton"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp"
+                        android:layout_gravity="center"
+                        app:cardBackgroundColor="@color/primary"
+                        app:cardCornerRadius="50dp"
+                        app:cardElevation="12dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="vertical"
+                            android:gravity="center">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SOS"
+                                android:textColor="@color/white"
+                                android:textSize="24sp"
+                                android:textStyle="bold"
+                                android:letterSpacing="0.1"/>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="HELP"
+                                android:textColor="@color/white_80"
+                                android:textSize="10sp"
+                                android:letterSpacing="0.2"/>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hold 3 seconds for Emergency Alert"
+                    android:textColor="@color/text_hint"
+                    android:textSize="12sp"
+                    android:layout_marginTop="12dp"/>
+            </LinearLayout>
+
+            <!-- Quick Stats Row -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="0" android:textColor="@color/primary" android:textSize="20sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Incidents Nearby" android:textColor="@color/text_hint" android:textSize="11sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginEnd="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="3" android:textColor="@color/success" android:textSize="20sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Hospitals Nearby" android:textColor="@color/text_hint" android:textSize="11sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="12dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:gravity="center">
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="AI" android:textColor="@color/info" android:textSize="20sp" android:textStyle="bold"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Guide Active" android:textColor="@color/text_hint" android:textSize="11sp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Services Section -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quick Services"
+                android:textColor="@color/text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:paddingStart="20dp"
+                android:paddingBottom="12dp"/>
+
+            <!-- 2x3 Service Grid -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:rowCount="3"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp">
+
+                <!-- Report Accident -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardReportAccident"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_red"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_accident"
+                                android:tint="@color/primary"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Report\nAccident" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="File incident report" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- AI Emergency Guide -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAiGuide"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_blue"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_ai"
+                                android:tint="@color/info"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="AI Emergency\nGuide" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Gemini AI powered" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Nearby Help -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardNearbyHelp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_green"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_hospital"
+                                android:tint="@color/success"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Nearby\nHelp" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Hospitals &amp; Police" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Emergency Contacts -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardEmergencyContacts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_orange"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_phone"
+                                android:tint="@color/accent"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Emergency\nContacts" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Quick dial numbers" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Live Map -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardLiveMap"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_purple"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_map"
+                                android:tint="#A855F7"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Live\nIncident Map" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Real-time tracking" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- My Reports -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMyReports"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="6dp"
+                    app:cardBackgroundColor="@color/card_bg"
+                    app:cardCornerRadius="16dp"
+                    app:strokeColor="@color/divider"
+                    app:strokeWidth="1dp">
+                    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+                        android:orientation="vertical" android:padding="16dp">
+                        <FrameLayout android:layout_width="44dp" android:layout_height="44dp">
+                            <View android:layout_width="44dp" android:layout_height="44dp"
+                                android:background="@drawable/bg_icon_teal"/>
+                            <ImageView android:layout_width="24dp" android:layout_height="24dp"
+                                android:layout_gravity="center" android:src="@drawable/ic_reports"
+                                android:tint="#14B8A6"/>
+                        </FrameLayout>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="My\nReports" android:textColor="@color/text_primary"
+                            android:textSize="14sp" android:textStyle="bold" android:layout_marginTop="12dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                            android:text="Track your reports" android:textColor="@color/text_hint"
+                            android:textSize="11sp" android:layout_marginTop="2dp"/>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+
+            <!-- Recent Incidents Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="12dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Recent Incidents"
+                    android:textColor="@color/text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/viewAllBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="View All"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/incidentsRecycler"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="20dp"
+                android:nestedScrollingEnabled="false"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNav"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        android:layout_gravity="bottom"
+        android:background="@color/nav_bg"
+        app:menu="@menu/bottom_nav_menu"
+        app:itemIconTint="@color/nav_selector"
+        app:itemTextColor="@color/nav_selector"
+        app:labelVisibilityMode="labeled"/>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

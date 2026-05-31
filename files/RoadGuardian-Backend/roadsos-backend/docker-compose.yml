@@ -1,0 +1,115 @@
+version: '3.9'
+
+services:
+
+  # ============================
+  # POSTGRESQL DATABASE
+  # ============================
+  postgres:
+    image: postgres:16-alpine
+    container_name: roadsos_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: roadsos_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-SecurePass123}
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./docker/init.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - roadsos_network
+
+  # ============================
+  # REDIS CACHE
+  # ============================
+  redis:
+    image: redis:7-alpine
+    container_name: roadsos_redis
+    restart: unless-stopped
+    command: redis-server --requirepass ${REDIS_PASSWORD:-RedisPass123} --maxmemory 256mb --maxmemory-policy allkeys-lru
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - roadsos_network
+
+  # ============================
+  # NODE.JS BACKEND
+  # ============================
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    container_name: roadsos_backend
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+    environment:
+      NODE_ENV: production
+      PORT: 5000
+      DATABASE_URL: postgresql://postgres:${DB_PASSWORD:-SecurePass123}@postgres:5432/roadsos_db
+      REDIS_URL: redis://redis:6379
+      REDIS_PASSWORD: ${REDIS_PASSWORD:-RedisPass123}
+      JWT_SECRET: ${JWT_SECRET}
+      JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET}
+      CLIENT_URL: ${CLIENT_URL:-http://localhost:5173}
+      SMTP_HOST: ${SMTP_HOST}
+      SMTP_PORT: ${SMTP_PORT:-587}
+      SMTP_USER: ${SMTP_USER}
+      SMTP_PASS: ${SMTP_PASS}
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    volumes:
+      - ./uploads:/app/uploads
+      - ./src/logs:/app/src/logs
+    networks:
+      - roadsos_network
+    healthcheck:
+      test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # ============================
+  # NGINX REVERSE PROXY (Optional)
+  # ============================
+  nginx:
+    image: nginx:alpine
+    container_name: roadsos_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - backend
+    networks:
+      - roadsos_network
+    profiles:
+      - production
+
+volumes:
+  postgres_data:
+  redis_data:
+
+networks:
+  roadsos_network:
+    driver: bridge

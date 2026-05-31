@@ -1,0 +1,242 @@
+[
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_dot_green.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_dot_green.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_top_wave.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_top_wave.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_hospital.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_hospital.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_orange.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_orange.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_ai_chat.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_ai_chat.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_road.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_road.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_profile.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_profile.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_ai.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_ai.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_sos_ring_3.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_sos_ring_3.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_login.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_shield.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_shield.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_blue.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_blue.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_teal.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_teal.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_location.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_location.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_sos_glow.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_sos_glow.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_red.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_red.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_accident.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_accident.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_home.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_home.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_notification.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_notification.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_ai_avatar.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_ai_avatar.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_map.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_map.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_sos.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_sos.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_item_chat_ai.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/item_chat_ai.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_map.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_map.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_splash.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_phone.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_phone.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_gps.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_gps.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_warning.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_warning.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_dashboard.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_dashboard.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_purple.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_purple.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_green.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_green.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_item_incident.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/item_incident.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_sos_ring_1.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_sos_ring_1.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_icon_btn.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_icon_btn.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_reports.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_reports.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_launcher.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_launcher.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_lock.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_lock.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/color_nav_selector.xml.flat",
+        "source": "com.roadguardian.app-main-38:/color/nav_selector.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_my_reports.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_my_reports.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_header_gradient.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_header_gradient.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_item_chat_user.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/item_chat_user.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_report_accident.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_report_accident.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_sos_screen.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_sos_screen.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_register.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_fire.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_fire.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_profile.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_profile.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/menu_bottom_nav_menu.xml.flat",
+        "source": "com.roadguardian.app-main-38:/menu/bottom_nav_menu.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_back.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_back.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_badge.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_badge.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_sos_ring_2.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_sos_ring_2.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/layout_activity_emergency_contacts.xml.flat",
+        "source": "com.roadguardian.app-main-38:/layout/activity_emergency_contacts.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_ambulance.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_ambulance.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_police.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_police.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_splash_gradient.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_splash_gradient.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_send.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_send.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_urgent_badge.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_urgent_badge.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_bg_live_badge.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/bg_live_badge.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_camera.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_camera.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_launcher_round.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.roadguardian.app-merged_res-36:/drawable_ic_email.xml.flat",
+        "source": "com.roadguardian.app-main-38:/drawable/ic_email.xml"
+    }
+]

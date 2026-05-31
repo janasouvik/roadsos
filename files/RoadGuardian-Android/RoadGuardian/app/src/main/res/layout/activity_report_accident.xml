@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_header_gradient"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="20dp">
+
+            <ImageView
+                android:id="@+id/backBtn"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_back"
+                android:tint="@color/white"
+                android:padding="8dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Report Accident"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:layout_marginStart="8dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="URGENT"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:background="@drawable/bg_urgent_badge"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="3dp"
+                android:paddingBottom="3dp"/>
+        </LinearLayout>
+
+        <!-- Form Content -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Photo Section -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/photoCard"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginBottom="16dp"
+                app:cardBackgroundColor="@color/surface_variant"
+                app:cardCornerRadius="16dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="1dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:id="@+id/previewImage"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        android:visibility="gone"/>
+
+                    <LinearLayout
+                        android:id="@+id/addPhotoPlaceholder"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:gravity="center">
+                        <ImageView
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:src="@drawable/ic_camera"
+                            android:tint="@color/primary"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap to add accident photo"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="14sp"
+                            android:layout_marginTop="8dp"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Camera or Gallery"
+                            android:textColor="@color/text_hint"
+                            android:textSize="12sp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Incident Type -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Incident Type"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/incidentTypeGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:singleSelection="true">
+
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="🚗 Vehicle Collision"
+                    android:textColor="@color/text_primary" app:chipBackgroundColor="@color/surface_variant"
+                    app:chipStrokeColor="@color/primary" app:chipStrokeWidth="1dp" android:checkable="true"/>
+
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="🏍 Bike Accident"
+                    android:textColor="@color/text_primary" app:chipBackgroundColor="@color/surface_variant"
+                    app:chipStrokeColor="@color/divider" app:chipStrokeWidth="1dp" android:checkable="true"/>
+
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="🚶 Pedestrian"
+                    android:textColor="@color/text_primary" app:chipBackgroundColor="@color/surface_variant"
+                    app:chipStrokeColor="@color/divider" app:chipStrokeWidth="1dp" android:checkable="true"/>
+
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="🔥 Fire/Hazard"
+                    android:textColor="@color/text_primary" app:chipBackgroundColor="@color/surface_variant"
+                    app:chipStrokeColor="@color/divider" app:chipStrokeWidth="1dp" android:checkable="true"/>
+
+                <com.google.android.material.chip.Chip android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:text="🚧 Road Block"
+                    android:textColor="@color/text_primary" app:chipBackgroundColor="@color/surface_variant"
+                    app:chipStrokeColor="@color/divider" app:chipStrokeWidth="1dp" android:checkable="true"/>
+            </com.google.android.material.chip.ChipGroup>
+
+            <!-- Severity -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Severity Level"
+                android:textColor="@color/text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/severityMinor"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    app:cardBackgroundColor="#1A22C55E"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/success"
+                    app:strokeWidth="1dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:gravity="center" android:text="Minor" android:textColor="@color/success"
+                        android:textSize="13sp" android:textStyle="bold"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/severityModerate"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    app:cardBackgroundColor="#1AF59E0B"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/warning"
+                    app:strokeWidth="1dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:gravity="center" android:text="Moderate" android:textColor="@color/warning"
+                        android:textSize="13sp" android:textStyle="bold"/>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/severityCritical"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    app:cardBackgroundColor="#1AEF4444"
+                    app:cardCornerRadius="10dp"
+                    app:strokeColor="@color/primary"
+                    app:strokeWidth="2dp">
+                    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
+                        android:gravity="center" android:text="Critical" android:textColor="@color/primary"
+                        android:textSize="13sp" android:textStyle="bold"/>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Location -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Input.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Accident Location"
+                android:layout_marginBottom="12dp"
+                app:startIconDrawable="@drawable/ic_location"
+                app:startIconTint="@color/primary"
+                app:endIconDrawable="@drawable/ic_gps"
+                app:endIconTint="@color/primary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/locationInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:hint="Detecting your location..."/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Description -->
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/Input.Default"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Describe what happened"
+                android:layout_marginBottom="20dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/descriptionInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_primary"
+                    android:inputType="textMultiLine"
+                    android:minLines="3"
+                    android:maxLines="6"
+                    android:gravity="top"/>
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Injuries Checkbox -->
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/injuriesCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="People are injured - Need medical help"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="8dp"
+                app:buttonTint="@color/primary"/>
+
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/blockingCheck"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Road is blocked / Traffic hazard"
+                android:textColor="@color/text_primary"
+                android:layout_marginBottom="24dp"
+                app:buttonTint="@color/primary"/>
+
+            <!-- Submit Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/submitBtn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="🚨  Submit Emergency Report"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:layout_marginBottom="8dp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="14dp"/>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/aiHelpBtn"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:text="Get AI Emergency Guidance"
+                android:textSize="14sp"
+                android:layout_marginBottom="20dp"
+                style="@style/Btn.Outline"/>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

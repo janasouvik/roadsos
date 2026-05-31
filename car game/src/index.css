@@ -1,0 +1,37 @@
+@import "tailwindcss";
+
+@theme {
+  --font-orbitron: 'Orbitron', sans-serif;
+  --font-rajdhani: 'Rajdhani', sans-serif;
+  --color-neon-orange: #ff6d00;
+  --color-neon-yellow: #FFD600;
+  --color-crash-red: #e53935;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body, #root {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Rajdhani', sans-serif;
+}
+
+/* Custom glass panel utility */
+.glass {
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Speed lines overlay */
+.speed-lines {
+  background: radial-gradient(ellipse at center, transparent 40%, rgba(255,255,255,0.04) 100%);
+  pointer-events: none;
+}
+
+/* Orbitron font shorthand */
+.font-orb { font-family: 'Orbitron', sans-serif; }
+.font-raj { font-family: 'Rajdhani', sans-serif; }

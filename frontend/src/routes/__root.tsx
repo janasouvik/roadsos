@@ -6,9 +6,6 @@ import {
   createRootRouteWithContext,
   useRouter,
   useLocation,
-  HeadContent,
-  Scripts,
-  ScriptOnce,
   Link,
 } from "@tanstack/react-router";
 
@@ -73,28 +70,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" },
     ],
   }),
-  shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
 
-const themeScript = `(function(){try{var t=localStorage.getItem('theme')||'dark';document.documentElement.classList.add(t);}catch(e){document.documentElement.classList.add('dark');}})();`;
 
-function RootShell({ children }: { children: React.ReactNode }) {
-  return (
-    <html lang="en" className="dark" suppressHydrationWarning>
-      <head>
-        <ScriptOnce>{themeScript}</ScriptOnce>
-        <HeadContent />
-      </head>
-      <body>
-        {children}
-        <Scripts />
-      </body>
-    </html>
-  );
-}
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();

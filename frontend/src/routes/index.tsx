@@ -65,12 +65,17 @@ function Home() {
                 <button className="btn-emergency h-14 px-7 rounded-full font-semibold inline-flex items-center justify-center gap-2">
                   <Phone className="h-4 w-4" /> Find Emergency Services
                 </button>
-                <button className="h-14 px-7 rounded-full font-semibold btn-ghost-glass inline-flex items-center justify-center gap-2">
-                  Learn More
+                <a 
+                  href="https://github.com/janasouvik/roadsos/tree/main/accident%20testing%20(demo%20)"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="h-14 px-7 rounded-full font-semibold btn-ghost-glass inline-flex items-center justify-center gap-2"
+                >
+                  Demo
                   <span className="h-7 w-7 rounded-full btn-emergency flex items-center justify-center">
                     <Play className="h-3 w-3 ml-0.5" fill="currentColor" />
                   </span>
-                </button>
+                </a>
               </motion.div>
 
               <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">

@@ -117,7 +117,7 @@ function Home() {
                 {viewMode === 'GAME' ? (
                   <iframe 
                     ref={iframeRef}
-                    src="/car_game.html" 
+                    src="/game/index.html" 
                     onLoad={handleIframeLoad}
                     className="w-full h-full border-none relative z-20"
                   />

@@ -9,6 +9,8 @@ import { FloatingMap } from "@/components/FloatingMap";
 import { QuickActionsBar } from "@/components/QuickActionsBar";
 import { SafetyBannerCTA } from "@/components/SafetyBannerCTA";
 import { fadeUp } from "@/lib/motion";
+import { useState, useRef } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,6 +41,21 @@ const why = [
 ];
 
 function Home() {
+  const { user } = useAuth();
+  const [viewMode, setViewMode] = useState<'IMAGE' | 'GAME'>('IMAGE');
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  const handleIframeLoad = () => {
+    if (iframeRef.current && user) {
+      iframeRef.current.contentWindow?.postMessage({
+        type: 'AUTO_LOGIN',
+        name: user.fullName,
+        phone: user.phone || '',
+        carNo: 'KA-05-MH-9999'
+      }, '*');
+    }
+  };
+
   return (
     <>
       {/* HERO */}
@@ -65,17 +82,15 @@ function Home() {
                 <button className="btn-emergency h-14 px-7 rounded-full font-semibold inline-flex items-center justify-center gap-2">
                   <Phone className="h-4 w-4" /> Find Emergency Services
                 </button>
-                <a 
-                  href="https://github.com/janasouvik/roadsos/tree/main/accident%20testing%20(demo%20)"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button 
+                  onClick={() => setViewMode(viewMode === 'IMAGE' ? 'GAME' : 'IMAGE')}
                   className="h-14 px-7 rounded-full font-semibold btn-ghost-glass inline-flex items-center justify-center gap-2"
                 >
-                  Demo
+                  {viewMode === 'IMAGE' ? 'Demo' : 'Close Demo'}
                   <span className="h-7 w-7 rounded-full btn-emergency flex items-center justify-center">
                     <Play className="h-3 w-3 ml-0.5" fill="currentColor" />
                   </span>
-                </a>
+                </button>
               </motion.div>
 
               <motion.div variants={fadeUp} className="mt-8 flex items-center gap-4">
@@ -97,22 +112,37 @@ function Home() {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.8 }}
-                className="relative rounded-3xl overflow-hidden border border-border/60 aspect-[4/3] lg:aspect-[5/6]"
+                className="relative rounded-3xl overflow-hidden border border-border/60 aspect-[4/3] lg:aspect-[5/6] bg-black"
               >
-                <img src={heroImg} alt="Emergency response scene at night" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+                {viewMode === 'GAME' ? (
+                  <iframe 
+                    ref={iframeRef}
+                    src="/car_game.html" 
+                    onLoad={handleIframeLoad}
+                    className="w-full h-full border-none relative z-20"
+                  />
+                ) : (
+                  <>
+                    <img src={heroImg} alt="Emergency response scene at night" className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-background/60 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent pointer-events-none" />
+                  </>
+                )}
               </motion.div>
-              <div className="hidden lg:block absolute -right-4 top-10 z-10">
-                <EmergencyServicesCard />
-              </div>
+              {viewMode === 'IMAGE' && (
+                <div className="hidden lg:block absolute -right-4 top-10 z-10">
+                  <EmergencyServicesCard />
+                </div>
+              )}
             </div>
           </div>
 
           {/* mobile EmergencyServicesCard */}
-          <div className="lg:hidden mt-8 flex justify-center">
-            <EmergencyServicesCard />
-          </div>
+          {viewMode === 'IMAGE' && (
+            <div className="lg:hidden mt-8 flex justify-center">
+              <EmergencyServicesCard />
+            </div>
+          )}
         </div>
       </section>
 
